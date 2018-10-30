@@ -1,4 +1,4 @@
-export const map = <A, B>(mapfn: (a: A) => B, array: A[]): B[] => {
+export const map = <A, B>(array: A[], mapfn: (a: A) => B): B[] => {
   const result: B[] = new Array(array.length)
   for (let i = 0; i < array.length; i++) {
     result[i] = mapfn(array[i])
@@ -7,4 +7,4 @@ export const map = <A, B>(mapfn: (a: A) => B, array: A[]): B[] => {
 }
 
 map.partial = <A, B>(mapFn: (a: A) => B) => (array: A[]): B[] =>
-  map(mapFn, array)
+  map(array, mapFn)

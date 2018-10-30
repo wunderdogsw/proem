@@ -2,10 +2,27 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build": "tsc -b packages"
+    "build": "tsc -b packages",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.8",
+    "jest": "^23.6.0",
     "lerna": "^3.4.3",
+    "prettier": "^1.14.3",
+    "ts-jest": "^23.10.4",
     "typescript": "^3.1.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "<rootDir>/packages/**/*.test.ts"
+    ]
   }
 }
