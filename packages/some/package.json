@@ -1,6 +1,6 @@
 {
   "name": "@proem/some",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Proem package for handling possibly null values",
   "keywords": [
     "null",
@@ -33,5 +33,9 @@
   },
   "bugs": {
     "url": "https://github.com/wunderdogsw/proem/issues"
+  },
+  "gitHead": "8fc3bbafef3198e6a8d0a9c4f71c20d0f69df567",
+  "dependencies": {
+    "typescript": "^3.1.4"
   }
 }
