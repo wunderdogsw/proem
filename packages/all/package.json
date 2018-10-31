@@ -38,7 +38,7 @@
   "dependencies": {
     "@proem/array": "^0.0.2"
   },
-  "gitHead": "4ac04bf0e19ebe487b9c40c3af8316a8bafeb719",
+  "gitHead": "777c7f1c1b71d1dd235011957f5873ec4449f6cd",
   "devDependencies": {
     "typescript": "^3.1.4"
   }
