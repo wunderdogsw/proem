@@ -1,0 +1,37 @@
+{
+  "name": "@proem/some",
+  "version": "0.0.4",
+  "description": "Proem package for handling possibly null values",
+  "keywords": [
+    "null",
+    "ts",
+    "typescript",
+    "some",
+    "maybe",
+    "proem"
+  ],
+  "author": "Joni Katajamäki <joni.katajamaki@gmail.com>",
+  "homepage": "https://github.com/wunderdogsw/proem",
+  "license": "MIT",
+  "main": "lib/some.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wunderdogsw/proem.git"
+  },
+  "scripts": {
+    "prepublishOnly": "tsc -b .",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wunderdogsw/proem/issues"
+  }
+}
