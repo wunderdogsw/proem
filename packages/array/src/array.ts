@@ -1,5 +1,5 @@
 export const map = <A, B>(array: A[], mapfn: (a: A) => B): B[] => {
-  const result: B[] = new Array(array.length)
+  const result = new Array<B>(array.length)
   for (let i = 0; i < array.length; i++) {
     result[i] = mapfn(array[i])
   }
@@ -8,3 +8,31 @@ export const map = <A, B>(array: A[], mapfn: (a: A) => B): B[] => {
 
 map.partial = <A, B>(mapFn: (a: A) => B) => (array: A[]): B[] =>
   map(array, mapFn)
+
+export function filter<A, B extends A>(
+  array: A[],
+  guard: (value: A) => value is B
+): B[]
+export function filter<A>(array: A[], predicate: (value: A) => boolean): A[]
+export function filter(array: any[], predicate: (value: any) => boolean) {
+  const result: any[] = []
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i]
+    if (predicate(value)) {
+      result.push(value)
+    }
+  }
+  return result
+}
+
+function filterPartial<A, B extends A>(
+  predicate: (value: A) => value is B
+): (array: A[]) => B[]
+function filterPartial<A>(predicate: (value: A) => boolean): (array: A[]) => A[]
+function filterPartial(
+  predicate: (value: any) => boolean
+): (array: any[]) => any[] {
+  return (array: any[]) => filter(array, predicate)
+}
+
+filter.partial = filterPartial
