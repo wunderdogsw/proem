@@ -1,4 +1,4 @@
-import { map, filter } from './array'
+import { map, filter, reduce } from './array'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -26,5 +26,17 @@ describe('filter', () => {
       const filtered: string[] = filter.partial(isString)(items)
       expect(filtered).toEqual(['a', 'bb', 'ddd'])
     })
+  })
+})
+
+describe('reduce', () => {
+  it('should sum values', () => {
+    const result = reduce([2, 4, 6], 0, (r, n) => r + n)
+    expect(result).toBe(12)
+  })
+
+  it('should work with empty array', () => {
+    const result = reduce([], 0, (r, n) => r + n)
+    expect(result).toBe(0)
   })
 })

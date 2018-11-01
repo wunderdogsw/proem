@@ -36,3 +36,19 @@ function filterPartial(
 }
 
 filter.partial = filterPartial
+
+export const reduce = <A, R>(
+  array: A[],
+  initial: R,
+  reducer: (acc: R, value: A) => R
+) => {
+  let result = initial
+  for (let i = 0; i < array.length; i++) {
+    result = reducer(result, array[i])
+  }
+  return result
+}
+
+reduce.partial = <A, R>(reducer: (acc: R, value: A) => R) => (initial: R) => (
+  array: A[]
+) => reduce(array, initial, reducer)
