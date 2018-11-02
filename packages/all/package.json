@@ -1,6 +1,6 @@
 {
   "name": "@proem/all",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Meta package that includes all proem packages",
   "keywords": [
     "proem",
@@ -36,7 +36,7 @@
     "url": "https://github.com/wunderdogsw/proem/issues"
   },
   "dependencies": {
-    "@proem/array": "^0.0.10",
+    "@proem/array": "^0.0.11",
     "typescript": "^3.1.4"
   },
   "gitHead": "d351f0379f6bafecc307dbaa5898b746aef47f83",
