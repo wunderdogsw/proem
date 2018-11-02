@@ -2,6 +2,7 @@
   "files": [],
   "references": [
     { "path": "array/tsconfig.esm.json" },
-    { "path": "some/tsconfig.esm.json" }
+    { "path": "some/tsconfig.esm.json" },
+    { "path": "pipe/tsconfig.esm.json" }
   ]
 }
