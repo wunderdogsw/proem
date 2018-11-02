@@ -22,7 +22,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "esm"
   ],
   "publishConfig": {
     "access": "public"
