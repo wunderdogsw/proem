@@ -43,5 +43,6 @@
   },
   "devDependencies": {
     "@proem/array": "^0.0.7"
-  }
+  },
+  "gitHead": "4426a681f6211de7312511891457d467c528cac5"
 }

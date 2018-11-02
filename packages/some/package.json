@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/wunderdogsw/proem/issues"
   },
-  "gitHead": "8fc3bbafef3198e6a8d0a9c4f71c20d0f69df567",
+  "gitHead": "4426a681f6211de7312511891457d467c528cac5",
   "dependencies": {
     "typescript": "^3.1.4"
   }
