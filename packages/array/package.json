@@ -12,7 +12,8 @@
   "homepage": "https://github.com/wunderdogsw/proem",
   "license": "MIT",
   "main": "lib/array.js",
-  "typings": "lib/array.d.ts",
+  "module": "esm/array.js",
+  "types": "lib/array.d.ts",
   "directories": {
     "lib": "lib"
   },
@@ -23,7 +24,9 @@
     "lib"
   ],
   "scripts": {
-    "prepublishOnly": "tsc -b .",
+    "build:commonjs": "tsc -b .",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "gitHead": "8fc3bbafef3198e6a8d0a9c4f71c20d0f69df567",

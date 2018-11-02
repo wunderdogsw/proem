@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "esnext",
+    "module": "commonjs",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "strict": true,
     "composite": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   },
-  "exclude": ["**/*.test.ts"]
+  "exclude": ["**/*.test.ts", "**/esm/*", "**/lib/*"]
 }

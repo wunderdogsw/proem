@@ -14,6 +14,8 @@
   "homepage": "https://github.com/wunderdogsw/proem",
   "license": "MIT",
   "main": "lib/some.js",
+  "module": "esm/some.js",
+  "types": "lib/some.d.ts",
   "directories": {
     "lib": "lib"
   },
@@ -28,7 +30,9 @@
     "url": "git+https://github.com/wunderdogsw/proem.git"
   },
   "scripts": {
-    "prepublishOnly": "tsc -b .",
+    "build:commonjs": "tsc -b .",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

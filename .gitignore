@@ -1,5 +1,7 @@
 node_modules/
-*.log
 packages/*/lib
+packages/*/esm
+packages/*/node_modules
+*.log
 .idea
 *.sw?
