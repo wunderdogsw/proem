@@ -30,11 +30,8 @@
     "prepublishOnly": "npm run build:commonjs && npm run build:esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "4426a681f6211de7312511891457d467c528cac5",
+  "gitHead": "3173f2d8c5a6d576de73375e1477770690b1d168",
   "devDependencies": {
-    "typescript": "^3.1.4"
-  },
-  "dependencies": {
     "typescript": "^3.1.4"
   }
 }
