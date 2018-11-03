@@ -1,6 +1,6 @@
 {
   "name": "@proem/array",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Typescript array utilities",
   "keywords": [
     "ts",
@@ -32,7 +32,7 @@
   },
   "gitHead": "1724f654330c1c1a8631069d2884bc250d795233",
   "devDependencies": {
-    "@proem/function": "^0.0.12",
+    "@proem/function": "^0.0.13",
     "typescript": "^3.1.4"
   }
 }
