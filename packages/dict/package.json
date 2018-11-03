@@ -1,0 +1,39 @@
+{
+  "name": "@proem/dict",
+  "version": "0.0.12",
+  "description": "Typescript dicttionary utilities",
+  "keywords": [
+    "ts",
+    "typescript",
+    "dict",
+    "dictionary",
+    "util"
+  ],
+  "author": "Timo Sand <timo.sand@iki.fi>",
+  "homepage": "https://github.com/wunderdogsw/proem",
+  "license": "MIT",
+  "main": "lib/dict.js",
+  "module": "esm/dict.js",
+  "types": "lib/dict.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib",
+    "esm"
+  ],
+  "scripts": {
+    "build:commonjs": "tsc -b .",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "build": "npm run build:esm && npm run build:commonjs",
+    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "gitHead": "1724f654330c1c1a8631069d2884bc250d795233",
+  "devDependencies": {
+    "typescript": "^3.1.4"
+  }
+}

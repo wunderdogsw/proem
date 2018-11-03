@@ -4,6 +4,7 @@
     { "path": "function/tsconfig.esm.json" },
     { "path": "array/tsconfig.esm.json" },
     { "path": "some/tsconfig.esm.json" },
-    { "path": "pipe/tsconfig.esm.json" }
+    { "path": "pipe/tsconfig.esm.json" },
+    { "path": "dict/tsconfig.esm.json" }
   ]
 }

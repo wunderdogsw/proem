@@ -1,9 +1,10 @@
 {
   "files": [],
   "references": [
-    { "path": "function" },
     { "path": "array" },
+    { "path": "dict" }
+    { "path": "function" },
+    { "path": "pipe" },
     { "path": "some" },
-    { "path": "pipe" }
   ]
 }
