@@ -1,4 +1,9 @@
 {
   "files": [],
-  "references": [{ "path": "array" }, { "path": "some" }, { "path": "pipe" }]
+  "references": [
+    { "path": "array" },
+    { "path": "some" },
+    { "path": "pipe" },
+    { "path": "function" }
+  ]
 }
