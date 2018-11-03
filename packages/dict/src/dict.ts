@@ -8,18 +8,18 @@ export const map = <A,B>(dict: A, mapfn: ([k, v] : [string, any]) => B): B[] => 
   return result
 }
 
-// map.partial = <A, B>(mapFn: (a: A) => B) => (array: A[]): B[] =>
-//   map(array, mapFn)
+map.partial = <A, B>(mapFn: ([k,v]: [string,any]) => B) => (dict: A): B[] =>
+  map(dict, mapFn)
 
 // export function filter<A, B extends A>(
-//   array: A[],
+//   dict: A[],
 //   guard: (value: A) => value is B
 // ): B[]
-// export function filter<A>(array: A[], predicate: (value: A) => boolean): A[]
-// export function filter(array: any[], predicate: (value: any) => boolean) {
+// export function filter<A>(dict: A[], predicate: (value: A) => boolean): A[]
+// export function filter(dict: any[], predicate: (value: any) => boolean) {
 //   const result: any[] = []
-//   for (let i = 0; i < array.length; i++) {
-//     const value = array[i]
+//   for (let i = 0; i < dict.length; i++) {
+//     const value = dict[i]
 //     if (predicate(value)) {
 //       result.push(value)
 //     }
@@ -29,28 +29,28 @@ export const map = <A,B>(dict: A, mapfn: ([k, v] : [string, any]) => B): B[] => 
 
 // function filterPartial<A, B extends A>(
 //   predicate: (value: A) => value is B
-// ): (array: A[]) => B[]
-// function filterPartial<A>(predicate: (value: A) => boolean): (array: A[]) => A[]
+// ): (dict: A[]) => B[]
+// function filterPartial<A>(predicate: (value: A) => boolean): (dict: A[]) => A[]
 // function filterPartial(
 //   predicate: (value: any) => boolean
-// ): (array: any[]) => any[] {
-//   return (array: any[]) => filter(array, predicate)
+// ): (dict: any[]) => any[] {
+//   return (dict: any[]) => filter(dict, predicate)
 // }
 
 // filter.partial = filterPartial
 
 // export const reduce = <A, R>(
-//   array: A[],
+//   dict: A[],
 //   initial: R,
 //   reducer: (acc: R, value: A) => R
 // ) => {
 //   let result = initial
-//   for (let i = 0; i < array.length; i++) {
-//     result = reducer(result, array[i])
+//   for (let i = 0; i < dict.length; i++) {
+//     result = reducer(result, dict[i])
 //   }
 //   return result
 // }
 
 // reduce.partial = <A, R>(reducer: (acc: R, value: A) => R) => (initial: R) => (
-//   array: A[]
-// ) => reduce(array, initial, reducer)
+//   dict: A[]
+// ) => reduce(dict, initial, reducer)

@@ -10,6 +10,14 @@ describe('map', () => {
     const transformed = map({foo: 'bar'}, ([k,v]) => v)
     expect(transformed).toEqual(['bar'])
   })
+
+  describe('map.partial', () => {
+    it('should catenate keys and values', () => {
+      const catenatingMapping = map.partial(([k, v]) => k + v)
+      const transformed = catenatingMapping({ foo: 'bar' })
+      expect(transformed).toEqual(['foobar'])
+    })
+  })
 })
 
 // describe('filter', () => {
