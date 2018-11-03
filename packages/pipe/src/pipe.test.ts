@@ -8,6 +8,6 @@ describe('pipe', () => {
       .to(array.filter.partial(l => l > 4))
       .to(array.reduce.partial<number, number>((acc, n) => acc + n)(0))
 
-    expect(longWordsLength('foo.hello.world.and.other.places')).toBe(2)
+    expect(longWordsLength('foo.hello.world.and.other.places')).toBe(21)
   })
 })
