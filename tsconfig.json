@@ -1,10 +1,11 @@
 {
   "files": [],
   "references": [
+    { "path": "packages/*" },
     { "path": "array" },
-    { "path": "dict" }
+    { "path": "dict" },
     { "path": "function" },
     { "path": "pipe" },
-    { "path": "some" },
+    { "path": "some" }
   ]
 }
