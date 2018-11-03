@@ -5,6 +5,10 @@ node_js:
 - '8'
 - '6'
 
+cache:
+  directories:
+  - "$HOME/.npm"
+
 before_script:
   - lerna bootstrap
   - npm run build
