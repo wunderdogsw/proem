@@ -11,4 +11,5 @@ cache:
 
 before_script:
   - lerna bootstrap
+  - lerna run prepublishOnly
   - npm run build
