@@ -81,7 +81,8 @@ Edit `package.json`:
 }
 ```
 
-Add a row for the package in TS project composite configurations:
+Add a row for the package in TS project composite configurations. References order is also the build order,
+so packages that are dependencies for other packages needs to first in the array.
 
 `packages/tsconfig.json`:
 
