@@ -43,3 +43,48 @@ map.partial(n => n * n)([1, 2, 3])
 In the fully applied version, the target (array, promise, ...) should be the first argument, to make use of type inference.
 
 In the partially applied version the target should be the last argument.
+
+## Creating a new package
+
+Lerna handles the creation of the package, but the new package requires some extra configuration
+for TypeScript and for compiling different versions for ES6 and CommonJS modules.
+
+```
+lerna create @proem/<package>
+```
+
+Copy `tsconfig.esm.json` and `tsconfig.json` from another module.
+
+Edit `package.json`:
+
+```
+{
+  "main": "lib/<package>.js",
+  "module": "esm/<package>.js",
+  "types": "lib/<package>.d.ts",
+
+  ...
+
+  "files": [
+    "lib",
+    "esm"
+  ],
+
+  ...
+
+  "scripts": {
+    "build:commonjs": "tsc -b .",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
+    ...
+  }
+}
+```
+
+## Publishing
+
+You need to be logged in NPM as a user that is a member of the `@proem` NPM organization.
+
+```
+npm run publish
+```

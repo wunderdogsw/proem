@@ -5,6 +5,7 @@
     "build:esm": "tsc -b packages/tsconfig.esm.json",
     "build:commonjs": "tsc -b packages",
     "build": "npm run build:esm && npm run build:commonjs",
+    "publish": "npm run build && lerna publish",
     "test:watch": "jest --watch"
   },
   "devDependencies": {
