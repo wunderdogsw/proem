@@ -7,3 +7,4 @@ node_js:
 
 before_script:
   - lerna bootstrap
+  - npm run build
