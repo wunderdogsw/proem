@@ -1,4 +1,4 @@
-import { map } from './dict'
+import { map, filter } from './dict'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -20,11 +20,11 @@ describe('map', () => {
   })
 })
 
-// describe('filter', () => {
-//   it('should remove items not matching predicate', () => {
-//     const filtered = filter(['a', 'bb', 'cc', 'ddd'], s => s.length !== 2)
-//     expect(filtered).toEqual(['a', 'ddd'])
-//   })
+describe('filter', () => {
+  it('should remove items not matching predicate', () => {
+    const filtered = filter({ foo: 'bar', bar: 'baz' }, ([k,v]) => k !== 'bar')
+    expect(filtered).toEqual({ foo: 'bar' })
+  })
 
 //   const isString = (s: number | string): s is string => typeof s === 'string'
 
@@ -52,4 +52,4 @@ describe('map', () => {
 //     const result = reduce([], 0, (r, n) => r + n)
 //     expect(result).toBe(0)
 //   })
-// })
+})

@@ -1,38 +1,37 @@
+import { Predicate, Guard, Reducer, UnaryFn } from '@proem/function'
 
-export const map = <A,B>(dict: A, mapfn: ([k, v] : [string, any]) => B): B[] => {
-  const objectEntries = Object.entries(dict)
-  const result = new Array<B>(objectEntries.length)
-  for (let i = 0; i < objectEntries.length; i++) {
-    result[i] = mapfn(objectEntries[i])
-  }
-  return result
+interface Dictionary {
+  [key:string]: any
 }
+export const map = <A extends Dictionary, B>(dict: A, mapfn: ([k, v]: [string, any]) => B): B[] => {
+         const dictEntries = Object.entries(dict)
+         const result = new Array<B>(dictEntries.length)
+         for (let i = 0; i < dictEntries.length; i++) {
+           result[i] = mapfn(dictEntries[i])
+         }
+         return result
+       }
 
-map.partial = <A, B>(mapFn: ([k,v]: [string,any]) => B) => (dict: A): B[] =>
-  map(dict, mapFn)
+map.partial = <A, B>(mapFn: UnaryFn<[string, any], B>) => (dict: A): B[] => map(dict, mapFn)
 
-// export function filter<A, B extends A>(
-//   dict: A[],
-//   guard: (value: A) => value is B
-// ): B[]
-// export function filter<A>(dict: A[], predicate: (value: A) => boolean): A[]
-// export function filter(dict: any[], predicate: (value: any) => boolean) {
-//   const result: any[] = []
-//   for (let i = 0; i < dict.length; i++) {
-//     const value = dict[i]
-//     if (predicate(value)) {
-//       result.push(value)
-//     }
-//   }
-//   return result
-// }
+
+export function filter<A extends Dictionary, B extends Dictionary>(dict: A, predicate: Predicate<[string, any]>): B {
+         const result: B = <B>{}
+         const dictEntries = Object.entries(dict)
+         dictEntries.forEach(entry => {
+           if (predicate(entry)) {
+             result[entry[0]] = entry[1]
+           }
+         })
+         return result
+       }
 
 // function filterPartial<A, B extends A>(
 //   predicate: (value: A) => value is B
 // ): (dict: A[]) => B[]
-// function filterPartial<A>(predicate: (value: A) => boolean): (dict: A[]) => A[]
+// function filterPartial<A>(predicate: predicate: Predicate<A>): (dict: A[]) => A[]
 // function filterPartial(
-//   predicate: (value: any) => boolean
+//   predicate: Predicate<any>
 // ): (dict: any[]) => any[] {
 //   return (dict: any[]) => filter(dict, predicate)
 // }
