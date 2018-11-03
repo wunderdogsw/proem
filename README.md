@@ -81,6 +81,26 @@ Edit `package.json`:
 }
 ```
 
+Add a row for the package in TS project composite configurations:
+
+`packages/tsconfig.json`:
+
+```
+  "references": [
+    ...
+    { "path": "<package>" }
+  ]
+```
+
+`packages/tsconfig.esm.json`:
+
+```
+  "references": [
+    ...
+    { "path": "<package>/tsconfig.esm.json" }
+  ]
+```
+
 ## Publishing
 
 You need to be logged in NPM as a user that is a member of the `@proem` NPM organization.
