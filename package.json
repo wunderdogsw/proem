@@ -6,7 +6,8 @@
     "build:commonjs": "tsc -b packages",
     "build": "npm run build:esm && npm run build:commonjs",
     "publish": "npm run build && lerna publish",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "build:watch": "tsc -b packages -w"
   },
   "devDependencies": {
     "@types/jest": "^23.3.8",
