@@ -77,6 +77,13 @@ Edit `package.json`:
     "build:esm": "tsc -b ./tsconfig.esm.json",
     "prepublishOnly": "npm run build:commonjs && npm run build:esm",
     ...
+  },
+
+  ...
+
+  "devDependencies": {
+    ...
+    "typescript": "^3.1.4"
   }
 }
 ```
