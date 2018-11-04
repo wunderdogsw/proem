@@ -5,6 +5,11 @@ describe('map', () => {
     const transformed = map(['a', 'bb', 'ccc'], n => n.length)
     expect(transformed).toEqual([1, 2, 3])
   })
+
+  it ('should return indexes for items', () => {
+    const transformed = map(['a', 'bb', 'ccc'], (n, i) => n.length * i)
+    expect(transformed).toEqual([0, 2, 6])
+  })
 })
 
 describe('filter', () => {
@@ -18,6 +23,11 @@ describe('filter', () => {
   it('should return items matching guard as type of guard', () => {
     const filtered: string[] = filter([11, 'a', 'bb', 12, 'ddd', 33], isString)
     expect(filtered).toEqual(['a', 'bb', 'ddd'])
+  })
+
+  it('should filter by index', () => {
+    const filtered: string[] = filter([11, 'a', 'bb', 12, 'ddd', 33], (_,i) => i % 2 == 0)
+    expect(filtered).toEqual([11, 'bb', 'ddd'])
   })
 
   describe('filter.partial', () => {
@@ -38,5 +48,10 @@ describe('reduce', () => {
   it('should work with empty array', () => {
     const result = reduce([], 0, (r, n) => r + n)
     expect(result).toBe(0)
+  })
+
+  it('should sum values and indexes', () => {
+    const result = reduce([2, 4, 6], 0, (r, n, i) => r + n + i)
+    expect(result).toBe(15)
   })
 })
