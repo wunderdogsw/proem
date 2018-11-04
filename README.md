@@ -91,21 +91,21 @@ Edit `package.json`:
 Add a row for the package in TS project composite configurations. References order is also the build order,
 so packages that are dependencies for other packages needs to first in the array.
 
-`packages/tsconfig.json`:
+`./tsconfig.json`:
 
 ```
   "references": [
     ...
-    { "path": "<package>" }
+    { "path": packages/"<package>" }
   ]
 ```
 
-`packages/tsconfig.esm.json`:
+`./tsconfig.esm.json`:
 
 ```
   "references": [
     ...
-    { "path": "<package>/tsconfig.esm.json" }
+    { "path": "packages/<package>/tsconfig.esm.json" }
   ]
 ```
 
