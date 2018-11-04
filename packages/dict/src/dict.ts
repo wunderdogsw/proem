@@ -1,54 +1,60 @@
-import { Predicate, Guard, Reducer, UnaryFn } from '@proem/function'
+import { Predicate, Guard, Reducer, UnaryFn , BinaryFn} from '@proem/function'
 
-export interface Dictionary {
-  [key:string]: any
+export interface Dictionary<A> {
+  [key: string]: A
 }
 
-export const map = <A extends Dictionary, B>(dict: A, mapfn: ([k, v]: [string, any]) => B): B[] => {
-         const dictEntries = Object.entries(dict)
-         const result = new Array<B>(dictEntries.length)
-         for (let i = 0; i < dictEntries.length; i++) {
-           result[i] = mapfn(dictEntries[i])
+export function map<A, B>(dict: Dictionary<A>, mapfn: BinaryFn<string, A, B>): Dictionary<B> {
+         const result: Dictionary<B> = {}
+         for (let key in dict) {
+           if (dict.hasOwnProperty(key)) {
+             result[key] = mapfn(key, dict[key])
+           }
          }
          return result
        }
 
-map.partial = <A, B>(mapFn: UnaryFn<[string, any], B>) => (dict: A): B[] => map(dict, mapFn)
+map.partial = function mapPartial<A, B>( mapFn: BinaryFn<string, A, B> ): (dict: Dictionary<A>) => Dictionary<B> {
+  return (dict: Dictionary<A>) => map(dict, mapFn)
+}
 
 
-export function filter<A extends Dictionary, B extends Dictionary>(dict: A, predicate: Predicate<[string, any]>): B {
-         const result: B = <B>{}
-         const dictEntries = Object.entries(dict)
-         dictEntries.forEach(entry => {
-           if (predicate(entry)) {
-             result[entry[0]] = entry[1]
-           }
-         })
-         return result
-       }
+export function filter<A, B extends A>(dict: Dictionary<A>, guard: Guard<A, B>): Dictionary<B>
+export function filter<A>(dict: Dictionary<A>, predicate: Predicate<[string, A]>): Dictionary<A>
+export function filter(dict: Dictionary<any>, predicate: Predicate<[string, any]>): Dictionary<any> {
+  const result: Dictionary<any> = {}
+  for (let key in dict) {
+    if (dict.hasOwnProperty(key)) {
+      const entry: [string, any] = [key, dict[key]]
+      if (predicate(entry)) {
+        result[key] = entry[1]
+      }
+    }
+  }
+  return result
+}
 
-function filterPartial<A extends Dictionary>(predicate: Predicate<[string, any]>): (dict: A) => A
-function filterPartial(
-  predicate: Predicate<[string,any]>
-): (dict: Dictionary) => Dictionary {
-  return (dict: Dictionary) => filter(dict, predicate)
+function filterPartial<A, B extends A>( guard: Guard<A, B> ): (dict: Dictionary<A>) => Dictionary<B>
+function filterPartial<A>( predicate: Predicate<[string, A]> ): (dict: Dictionary<A>) => Dictionary<A>
+function filterPartial( predicate: Predicate<[string, any]> ): (dict: Dictionary<any>) => Dictionary<any> {
+  return (dict: Dictionary<any>) => filter(dict, predicate)
 }
 
 filter.partial = filterPartial
 
-export const reduce = <A extends Dictionary, R>(
-  dict: A,
+export const reduce = <A, R>(
+  dict: Dictionary<A>,
   initial: R,
-  reducer: Reducer<[string, any], R>
+  reducer: Reducer<[string, A], R>
 ) => {
   let result = initial
-  const dictEntries = Object.entries(dict)
-  dictEntries.forEach(entry => {
-    result = reducer(result, entry)
-  })
+  for (let key in dict) {
+    if (dict.hasOwnProperty(key)) {
+      const entry: [string, A] = [key, dict[key]]
+      result = reducer(result, entry)
+    }
+  }
   return result
 }
 
-reduce.partial = <A, R>(reducer: Reducer<[string, any], R>) => (initial: R) => (
-  dict: A[]
-) => reduce(dict, initial, reducer)
+reduce.partial = <A, R>(reducer: Reducer<[string, A], R>) => (initial: R) => ( dict: Dictionary<A> ) => reduce(dict, initial, reducer)

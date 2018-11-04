@@ -10,8 +10,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "lib": [
-      "esnext",
-      "es2017.object"
+      "esnext"
     ]
   },
   "exclude": ["**/*.test.ts", "**/esm/*", "**/lib/*"]
