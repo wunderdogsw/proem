@@ -8,7 +8,7 @@
     "build:watch": "tsc -b packages -w",
     "publish": "npm run build && lerna publish",
     "test": "jest",
-    "test:watch": "npm test --watch"
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
     "@types/jest": "^23.3.8",
