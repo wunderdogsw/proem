@@ -1,0 +1,47 @@
+{
+  "name": "@proem/iterable",
+  "version": "0.0.13",
+  "description": "Typescript iterable & iterator utilities",
+  "keywords": [
+    "ts",
+    "typescript",
+    "iterable",
+    "iterator",
+    "util"
+  ],
+  "author": "Timo Sand <timo.sand@iki.fi>",
+  "homepage": "https://github.com/wunderdogsw/proem",
+  "license": "MIT",
+  "main": "lib/iterable.js",
+  "module": "esm/iterable.js",
+  "types": "lib/iterable.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "esm"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wunderdogsw/proem.git"
+  },
+  "scripts": {
+    "build:commonjs": "tsc -b .",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "build": "npm run build:commonjs && npm run build:esm",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wunderdogsw/proem/issues"
+  },
+  "devDependencies": {
+    "@proem/function": "^0.0.13",
+    "typescript": "^3.1.4"
+  }
+}
+
