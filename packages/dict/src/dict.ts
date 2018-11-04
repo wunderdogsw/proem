@@ -29,18 +29,17 @@ export function filter<A, B extends A>(
 ): Dictionary<B>
 export function filter<A>(
   dict: Dictionary<A>,
-  predicate: Predicate<[string, A]>
+  predicate: (index: string, value: A) => boolean
 ): Dictionary<A>
 export function filter(
   dict: Dictionary<any>,
-  predicate: Predicate<[string, any]>
+  predicate: (index: string, value: any) => boolean
 ): Dictionary<any> {
   const result: Dictionary<any> = {}
   for (let key in dict) {
     if (dict.hasOwnProperty(key)) {
-      const entry: [string, any] = [key, dict[key]]
-      if (predicate(entry)) {
-        result[key] = entry[1]
+      if (predicate(key, dict[key])) {
+        result[key] = dict[key]
       }
     }
   }
@@ -51,10 +50,10 @@ function filterPartial<A, B extends A>(
   guard: Guard<A, B>
 ): (dict: Dictionary<A>) => Dictionary<B>
 function filterPartial<A>(
-  predicate: Predicate<[string, A]>
+  predicate: (index: string, value: A) => boolean
 ): (dict: Dictionary<A>) => Dictionary<A>
 function filterPartial(
-  predicate: Predicate<[string, any]>
+  predicate: (index: string, value: any) => boolean
 ): (dict: Dictionary<any>) => Dictionary<any> {
   return (dict: Dictionary<any>) => filter(dict, predicate)
 }

@@ -2,18 +2,18 @@ import { map, filter, reduce } from './dict'
 
 describe('map', () => {
   it('should transform items', () => {
-    const transformed = map({foo: 'bar'}, ([k,v]) => k+v)
+    const transformed = map({foo: 'bar'}, (k,v) => k+v)
     expect(transformed).toEqual({foo: 'foobar'})
   })
 
   it('should list only values', () => {
-    const transformed = map({foo: 'bar'}, ([k,v]) => v)
+    const transformed = map({foo: 'bar'}, (_, v) => v)
     expect(transformed).toEqual({foo: 'bar'})
   })
 
   describe('map.partial', () => {
     it('should catenate keys and values', () => {
-      const catenatingMapping = map.partial(([k, v]) => k + v)
+      const catenatingMapping = map.partial((k, v) => k + v)
       const transformed = catenatingMapping({ foo: 'bar' })
       expect(transformed).toEqual({ foo: 'foobar' })
     })
@@ -22,11 +22,11 @@ describe('map', () => {
 
 describe('filter', () => {
   it('should remove items not matching predicate', () => {
-    const filtered = filter({ foo: 'bar', bar: 'baz' }, ([k,v]) => k !== 'bar')
+    const filtered = filter({ foo: 'bar', bar: 'baz' }, (k) => k !== 'bar')
     expect(filtered).toEqual({ foo: 'bar' })
   })
 
-  const isString = ([k,v] : [string,any] ) => typeof v === 'string'
+  const isString = (key: string, value: any ) => typeof value === 'string'
 
   it('should return items matching guard as type of guard', () => {
     const filtered = filter({ 'a': 11, 'bb': '12', 'ddd': 33 }, isString)
@@ -49,7 +49,7 @@ describe('reduce', () => {
   })
 
   it('should work with empty dict', () => {
-    const dict = filter({foo: 1}, ([k,v]) => false)
+    const dict = filter({foo: 1}, () => false)
     const result = reduce(dict, 0, (r, [_,v]) => r + v)
     expect(result).toBe(0)
   })
