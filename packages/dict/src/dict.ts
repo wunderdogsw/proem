@@ -38,18 +38,19 @@ export function filter<A extends Dictionary, B extends Dictionary>(dict: A, pred
 
 // filter.partial = filterPartial
 
-// export const reduce = <A, R>(
-//   dict: A[],
-//   initial: R,
-//   reducer: (acc: R, value: A) => R
-// ) => {
-//   let result = initial
-//   for (let i = 0; i < dict.length; i++) {
-//     result = reducer(result, dict[i])
-//   }
-//   return result
-// }
+export const reduce = <A extends Dictionary, R>(
+  dict: A,
+  initial: R,
+  reducer: Reducer<[string, any], R>
+) => {
+  let result = initial
+  const dictEntries = Object.entries(dict)
+  dictEntries.forEach(entry => {
+    result = reducer(result, entry)
+  })
+  return result
+}
 
-// reduce.partial = <A, R>(reducer: (acc: R, value: A) => R) => (initial: R) => (
-//   dict: A[]
-// ) => reduce(dict, initial, reducer)
+reduce.partial = <A, R>(reducer: Reducer<[string, any], R>) => (initial: R) => (
+  dict: A[]
+) => reduce(dict, initial, reducer)
