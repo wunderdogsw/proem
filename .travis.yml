@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- 'node'
+- 'lts/*'
+- '8'
+- '6'
+
+cache:
+  directories:
+  - "$HOME/.npm"
+
+before_script:
+  - lerna bootstrap
+  - lerna run prepublishOnly
+  - npm run build
