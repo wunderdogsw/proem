@@ -4,7 +4,7 @@ import { Predicate, Guard, Reducer, UnaryFn } from '@proem/function'
 export function map<A, B>(array: A[], mapfn: UnaryFn<A, B>): B[] {
   const result = new Array<B>(array.length)
   for (let i = 0; i < array.length; i++) {
-    result[i] = mapfn(array[i])
+    result[i] = mapfn(array[i], i)
   }
   return result
 }
@@ -20,15 +20,15 @@ map.partial = mapPartial
 export function filter<A, B extends A>(array: A[], guard: Guard<A, B>): B[]
 export function filter<A>(array: A[], predicate: Predicate<A>): A[]
 export function filter(array: any[], predicate: Predicate<any>) {
-  const result: any[] = []
-  for (let i = 0; i < array.length; i++) {
-    const value = array[i]
-    if (predicate(value)) {
-      result.push(value)
-    }
-  }
-  return result
-}
+         const result: any[] = []
+         for (let i = 0; i < array.length; i++) {
+           const value = array[i]
+           if (predicate(value, i)) {
+             result.push(value)
+           }
+         }
+         return result
+       }
 
 function filterPartial<A, B extends A>(guard: Guard<A, B>): (array: A[]) => B[]
 function filterPartial<A>(predicate: Predicate<A>): (array: A[]) => A[]
@@ -45,7 +45,7 @@ export const reduce = <A, R>(
 ) => {
   let result = initial
   for (let i = 0; i < array.length; i++) {
-    result = reducer(result, array[i])
+    result = reducer(result, array[i], i)
   }
   return result
 }
