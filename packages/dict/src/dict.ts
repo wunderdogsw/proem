@@ -1,8 +1,9 @@
 import { Predicate, Guard, Reducer, UnaryFn } from '@proem/function'
 
-interface Dictionary {
+export interface Dictionary {
   [key:string]: any
 }
+
 export const map = <A extends Dictionary, B>(dict: A, mapfn: ([k, v]: [string, any]) => B): B[] => {
          const dictEntries = Object.entries(dict)
          const result = new Array<B>(dictEntries.length)
@@ -26,17 +27,14 @@ export function filter<A extends Dictionary, B extends Dictionary>(dict: A, pred
          return result
        }
 
-// function filterPartial<A, B extends A>(
-//   predicate: (value: A) => value is B
-// ): (dict: A[]) => B[]
-// function filterPartial<A>(predicate: predicate: Predicate<A>): (dict: A[]) => A[]
-// function filterPartial(
-//   predicate: Predicate<any>
-// ): (dict: any[]) => any[] {
-//   return (dict: any[]) => filter(dict, predicate)
-// }
+function filterPartial<A extends Dictionary>(predicate: Predicate<[string, any]>): (dict: A) => A
+function filterPartial(
+  predicate: Predicate<[string,any]>
+): (dict: Dictionary) => Dictionary {
+  return (dict: Dictionary) => filter(dict, predicate)
+}
 
-// filter.partial = filterPartial
+filter.partial = filterPartial
 
 export const reduce = <A extends Dictionary, R>(
   dict: A,

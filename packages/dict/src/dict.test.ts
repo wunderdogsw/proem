@@ -1,4 +1,4 @@
-import { map, filter, reduce } from './dict'
+import { map, filter, reduce, Dictionary } from './dict'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -26,20 +26,20 @@ describe('filter', () => {
     expect(filtered).toEqual({ foo: 'bar' })
   })
 
-//   const isString = (s: number | string): s is string => typeof s === 'string'
+  const isString = ([k,v] : [string,any] ) => typeof v === 'string'
 
-//   it('should return items matching guard as type of guard', () => {
-//     const filtered: string[] = filter([11, 'a', 'bb', 12, 'ddd', 33], isString)
-//     expect(filtered).toEqual(['a', 'bb', 'ddd'])
-//   })
+  it('should return items matching guard as type of guard', () => {
+    const filtered: string[] = filter({ 'a': 11, 'bb': '12', 'ddd': 33 }, isString)
+    expect(filtered).toEqual({ 'bb': '12' })
+  })
 
-//   describe('filter.partial', () => {
-//     it('should return items matching guard as type of guard', () => {
-//       const items = [11, 'a', 'bb', 12, 'ddd', 33]
-//       const filtered: string[] = filter.partial(isString)(items)
-//       expect(filtered).toEqual(['a', 'bb', 'ddd'])
-//     })
-//   })
+  describe('filter.partial', () => {
+    it('should return items matching guard as type of guard', () => {
+      const items = {'a':11, 'bb': '12', 'ddd': 33}
+      const filtered: Dictionary = filter.partial(isString)(items)
+      expect(filtered).toEqual({'bb': '12'})
+    })
+  })
 })
 
 describe('reduce', () => {
