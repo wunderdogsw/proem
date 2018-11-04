@@ -1,9 +1,9 @@
 export type Guard<A, B extends A> = (value: A) => value is B
 
-export type Predicate<A> = (value: A) => boolean
+export type Predicate<A> = (value: A, index?: number) => boolean
 
-export type UnaryFn<A, B> = (value: A) => B
+export type UnaryFn<A, B> = (value: A, index?: number) => B
 
 export type BinaryFn<A, B, C> = (a: A, b: B) => C
 
-export type Reducer<A, B> = (accumulator: B, value: A) => B
+export type Reducer<A, B> = (accumulator: B, value: A, index?: number) => B
