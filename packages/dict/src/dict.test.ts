@@ -29,7 +29,7 @@ describe('filter', () => {
   const isString = (key: string, value: any ) => typeof value === 'string'
 
   it('should return items matching guard as type of guard', () => {
-    const filtered: Dictionary<string> = filter({ 'a': 11, 'bb': '12', 'ddd': 33 }, isString)
+    const filtered: Dictionary<string | number> = filter({ 'a': 11, 'bb': '12', 'ddd': 33 }, isString)
     expect(filtered).toEqual({ 'bb': '12' })
   })
 
@@ -55,7 +55,7 @@ describe('reduce', () => {
   })
 
   it('should add elements to array', () => {
-    const result: Array<[String, number]> = reduce({ foo: 2, bar: 4, baz: 6 }, [], (r: Array<[String, Number]>, n) => [...r, n])
+    const result: Array<[String, number]> = reduce({ foo: 2, bar: 4, baz: 6 }, [], (r: Array<[String, number]>, n) => [...r, n])
     expect(result).toEqual([['foo',2],['bar',4],['baz',6]])
   })
 })
