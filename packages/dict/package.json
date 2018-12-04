@@ -1,7 +1,7 @@
 {
   "name": "@proem/dict",
   "version": "0.0.13",
-  "description": "Typescript dicttionary utilities",
+  "description": "Typescript dictionary utilities",
   "keywords": [
     "ts",
     "typescript",
