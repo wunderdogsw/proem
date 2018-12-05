@@ -1,8 +1,10 @@
 import { map } from './iterable'
+import { UnaryFn } from '../../function'
 
 describe('map', () => {
+  const convertStringToLength: UnaryFn<string, number> = n => n.length;
   it('should transform items', () => {
-    const transformed = map(['a', 'bb', 'ccc'], n => n.length)
+    const transformed: number[] = map(['a', 'bb', 'ccc'], convertStringToLength)
     expect(transformed).toEqual([1, 2, 3])
   })
 })
