@@ -4,15 +4,11 @@ const isIterable = (value: any): value is Iterable<any> =>
   Boolean(value[Symbol.iterator])
 
 export const map = <A, B>(iterable: Iterable<A>, mapfn: UnaryFn<A, B>): B[] => {
-  const result = new Array<B>()
-  for (let entry of iterable) {
-    result.push(mapfn(entry))
-  }
-  return result
+  return Array.from(iterable, mapfn)
 }
 
-// map.partial = <A, B>(mapFn: UnaryFn<A, B>) => (array: A[]): B[] =>
-//   map(array, mapFn)
+map.partial = <A, B>(mapFn: UnaryFn<A, B>) => (iterable: Iterable<A>): B[] =>
+  map(iterable, mapFn)
 
 // export function filter<A, B extends A>(array: A[], guard: Guard<A, B>): B[]
 // export function filter<A>(array: A[], predicate: Predicate<A>): A[]
