@@ -64,3 +64,19 @@ export const reduce = <A, R>(
 reduce.partial = <A, R>(
   reducer: (accumulator: R, value: A, index: number) => R,
 ) => (initial: R) => (array: A[]) => reduce(array, initial, reducer)
+
+export const find = <A>(
+  array: A[],
+  predicate: IndexedPredicate<A>,
+): A | undefined => {
+  for (let i = 0; i < array.length; i++) {
+    const item = array[i]
+    if (predicate(item, i)) {
+      return item
+    }
+  }
+  return undefined
+}
+
+find.partial = <A>(predicate: IndexedPredicate<A>) => (array: A[]) =>
+  find(array, predicate)

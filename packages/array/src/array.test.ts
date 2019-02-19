@@ -1,4 +1,4 @@
-import { map, filter, reduce } from './index'
+import { map, filter, reduce, find } from './index'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -28,7 +28,7 @@ describe('filter', () => {
   it('should filter by index', () => {
     const filtered: Array<string | number> = filter(
       [11, 'a', 'bb', 12, 'ddd', 33],
-      (_, i) => i % 2 == 0
+      (_, i) => i % 2 == 0,
     )
     expect(filtered).toEqual([11, 'bb', 'ddd'])
   })
@@ -56,5 +56,23 @@ describe('reduce', () => {
   it('should sum values and indexes', () => {
     const result = reduce([2, 4, 6], 0, (r, n, i) => r + n + i)
     expect(result).toBe(15)
+  })
+})
+
+describe(find.name, () => {
+  it('should find first item that matches predicate', () => {
+    const items = [
+      { kind: 'a', value: 1 },
+      { kind: 'b', value: 2 },
+      { kind: 'b', value: 3 },
+    ]
+    const result = find(items, ({ kind }) => kind === 'b')
+    expect(result).toBe(items[1])
+  })
+
+  it('should return undefined if item is not found', () => {
+    const items = [1, 2, 3, 4]
+    const result = find(items, i => i > 4)
+    expect(result).toBeUndefined()
   })
 })
