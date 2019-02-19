@@ -140,5 +140,5 @@ references to the packages own tsconfig files, if the package depends on other p
 You need to be logged in NPM as a user that is a member of the `@proem` NPM organization.
 
 ```
-yarn publish
+yarn release
 ```
