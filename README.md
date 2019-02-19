@@ -35,6 +35,8 @@ git clean -dfx
 
 ## Tests
 
+Project must be built before running tests.
+
 Run `yarn test` or `yarn test:watch` in the repository root.
 
 ## Package structure
