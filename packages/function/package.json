@@ -33,7 +33,7 @@
   "scripts": {
     "build:commonjs": "tsc -b .",
     "build:esm": "tsc -b ./tsconfig.esm.json",
-    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
+    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

@@ -6,6 +6,8 @@ Meta package for adding all proem packages as dependencies.
 
 ```
 npm install @proem/all
+
+yarn add @proem/all
 ```
 
 ```ts

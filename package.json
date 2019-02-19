@@ -1,20 +1,23 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build:esm": "tsc -b ./tsconfig.esm.json",
     "build:commonjs": "tsc -b .",
-    "build": "npm run build:esm && npm run build:commonjs",
-    "build:watch": "tsc -b packages -w",
-    "publish": "npm run build && lerna publish",
+    "build": "yarn build:esm && yarn build:commonjs",
+    "build:watch": "tsc -b . -w",
+    "publish": "yarn build && lerna publish",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.8",
+    "@types/jest": "^24.0.6",
     "jest": "^24.1.0",
     "lerna": "^3.13.0",
-    "prettier": "^1.14.3",
+    "prettier": "^1.16.4",
     "ts-jest": "^24.0.0",
     "typescript": "^3.3.3"
   },

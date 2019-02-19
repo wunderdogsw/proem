@@ -9,14 +9,23 @@ this way the user gets all the packages by adding a single dependency.
 
 ## Developing
 
-Install deps and link monorepo projects together:
-
 ```
-npm i
-npx lerna bootstrap
+yarn install
 ```
 
-You can remove built files with git:
+Build & watch:
+
+```
+yarn build:watch
+```
+
+Test & watch:
+
+```
+yarn test:watch
+```
+
+You can remove built files with git (**REMOVES ALL UNCOMMITTED FILES!**):
 
 ```
 git clean -dfx
@@ -24,7 +33,7 @@ git clean -dfx
 
 ## Tests
 
-Run `npm test` or `npm run test:watch` in the repository root.
+Run `yarn test` or `yarn test:watch` in the repository root.
 
 ## Package structure
 
@@ -72,7 +81,7 @@ for TypeScript and for compiling different versions for ES6 and CommonJS modules
 lerna create @proem/<package>
 ```
 
-The package must have an entry point called `index.ts`.
+The package must have an entry point called `src/index.ts`.
 
 Copy `tsconfig.esm.json` and `tsconfig.json` from another module.
 
@@ -96,7 +105,7 @@ Edit `package.json`:
   "scripts": {
     "build:commonjs": "tsc -b .",
     "build:esm": "tsc -b ./tsconfig.esm.json",
-    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
+    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
     ...
   }
 ```
@@ -127,5 +136,5 @@ so packages that are dependencies for other packages needs to first in the array
 You need to be logged in NPM as a user that is a member of the `@proem` NPM organization.
 
 ```
-npm run publish
+yarn publish
 ```

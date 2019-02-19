@@ -28,8 +28,8 @@
   "scripts": {
     "build:commonjs": "tsc -b .",
     "build:esm": "tsc -b ./tsconfig.esm.json",
-    "build": "npm run build:esm && npm run build:commonjs",
-    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
+    "build": "yarn build:esm && yarn build:commonjs",
+    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "gitHead": "1724f654330c1c1a8631069d2884bc250d795233",
