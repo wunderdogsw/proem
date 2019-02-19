@@ -3,5 +3,6 @@
   "compilerOptions": {
     "outDir": "esm",
     "module": "esnext"
-  }
+  },
+  "references": [{ "path": "../function/tsconfig.esm.json" }]
 }

@@ -12,9 +12,9 @@
   "author": "Timo Sand <timo.sand@iki.fi>",
   "homepage": "https://github.com/wunderdogsw/proem",
   "license": "MIT",
-  "main": "lib/dict.js",
-  "module": "esm/dict.js",
-  "types": "lib/dict.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib"
   },
@@ -33,8 +33,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "gitHead": "1724f654330c1c1a8631069d2884bc250d795233",
+  "dependencies": {
+    "@proem/function": "^0.0.13"
+  },
   "devDependencies": {
-    "@proem/function": "^0.0.13",
     "typescript": "^3.1.4"
   }
 }

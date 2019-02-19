@@ -1,4 +1,4 @@
-import { map, filter, reduce } from './array'
+import { map, filter, reduce } from './index'
 
 describe('map', () => {
   it('should transform items', () => {

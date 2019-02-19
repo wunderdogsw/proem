@@ -14,9 +14,9 @@
   "author": "Joni Katajamäki <joni.katajamaki@wunderdog.fi>",
   "homepage": "https://github.com/wunderdogsw/proem",
   "license": "MIT",
-  "main": "lib/pipe.js",
-  "module": "esm/pipe.js",
-  "types": "lib/pipe.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"

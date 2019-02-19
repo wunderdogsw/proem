@@ -1,5 +1,5 @@
 import * as array from '@proem/array'
-import { pipe } from './pipe'
+import { pipe } from './index'
 
 describe('pipe', () => {
   it('should transform value through all piped functions', () => {

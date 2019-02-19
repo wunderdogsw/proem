@@ -9,9 +9,11 @@
     "composite": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "lib": [
-      "esnext"
-    ]
+    "baseUrl": "packages",
+    "paths": {
+      "@proem/*": ["./*/src"]
+    },
+    "lib": ["esnext"]
   },
   "exclude": ["**/*.test.ts", "**/esm/*", "**/lib/*"]
 }

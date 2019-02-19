@@ -13,9 +13,9 @@
   "author": "Joni Katajamäki <joni.katajamaki@gmail.com>",
   "homepage": "https://github.com/wunderdogsw/proem",
   "license": "MIT",
-  "main": "lib/function.js",
-  "module": "esm/function.js",
-  "types": "lib/function.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib"
   },
