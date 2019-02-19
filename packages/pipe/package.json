@@ -1,6 +1,6 @@
 {
   "name": "@proem/pipe",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Proem package for combining functions",
   "keywords": [
     "pipe",
@@ -42,7 +42,7 @@
     "url": "https://github.com/wunderdogsw/proem/issues"
   },
   "devDependencies": {
-    "@proem/array": "^0.0.13"
+    "@proem/array": "^0.0.14"
   },
   "gitHead": "1724f654330c1c1a8631069d2884bc250d795233"
 }
