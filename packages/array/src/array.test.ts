@@ -6,7 +6,7 @@ describe('map', () => {
     expect(transformed).toEqual([1, 2, 3])
   })
 
-  it ('should return indexes for items', () => {
+  it('should return indexes for items', () => {
     const transformed = map(['a', 'bb', 'ccc'], (n, i) => n.length * i)
     expect(transformed).toEqual([0, 2, 6])
   })
@@ -26,7 +26,10 @@ describe('filter', () => {
   })
 
   it('should filter by index', () => {
-    const filtered: string[] = filter([11, 'a', 'bb', 12, 'ddd', 33], (_,i) => i % 2 == 0)
+    const filtered: Array<string | number> = filter(
+      [11, 'a', 'bb', 12, 'ddd', 33],
+      (_, i) => i % 2 == 0
+    )
     expect(filtered).toEqual([11, 'bb', 'ddd'])
   })
 

@@ -1,6 +1,7 @@
 node_modules/
 packages/*/lib
 packages/*/esm
+packages/*/package-lock.json
 packages/*/node_modules
 *.log
 .idea

@@ -5,9 +5,22 @@ TypeScript standard library.
 The library is divided into npm packages under the @proem umbrella.
 
 `@proem/all` is a meta package that depends on all the other packages,
-this way the user gets all the packages with a single import.
+this way the user gets all the packages by adding a single dependency.
 
 ## Developing
+
+Install deps and link monorepo projects together:
+
+```
+npm i
+npx lerna bootstrap
+```
+
+## Tests
+
+Run `npm test` or `npm run test:watch` in the repository root.
+
+## Package structure
 
 The project is setup as a [Lerna](https://lernajs.io/) monorepository.
 

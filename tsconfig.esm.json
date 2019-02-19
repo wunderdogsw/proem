@@ -1,9 +1,9 @@
 {
   "files": [],
   "references": [
+    { "path": "packages/function/tsconfig.esm.json" },
     { "path": "packages/array/tsconfig.esm.json" },
     { "path": "packages/dict/tsconfig.esm.json" },
-    { "path": "packages/function/tsconfig.esm.json" },
     { "path": "packages/pipe/tsconfig.esm.json" },
     { "path": "packages/some/tsconfig.esm.json" }
   ]

@@ -8,14 +8,14 @@
     "build:watch": "tsc -b packages -w",
     "publish": "npm run build && lerna publish",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@types/jest": "^23.3.8",
-    "jest": "^23.6.0",
-    "lerna": "^3.4.3",
+    "jest": "^24.1.0",
+    "lerna": "^3.13.0",
     "prettier": "^1.14.3",
-    "ts-jest": "^23.10.4",
+    "ts-jest": "^24.0.0",
     "typescript": "^3.1.4"
   },
   "jest": {
