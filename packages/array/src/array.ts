@@ -1,32 +1,36 @@
 import { Predicate, Guard, Reducer, UnaryFn } from '@proem/function'
 
-export const map = <A, B>(array: A[], mapfn: UnaryFn<A, B>): B[] => {
+
+export function map<A, B>(array: A[], mapfn: (value: A, index?: number) => B): B[] {
   const result = new Array<B>(array.length)
   for (let i = 0; i < array.length; i++) {
-    result[i] = mapfn(array[i])
+    result[i] = mapfn(array[i], i)
   }
   return result
 }
 
-map.partial = <A, B>(mapFn: UnaryFn<A, B>) => (array: A[]): B[] =>
-  map(array, mapFn)
+function mapPartial<A, B>( mapFn: (value: A, index?: number) => B ): (array: A[]) => B[] {
+  return (array: A[]) => map(array, mapFn)
+}
+
+map.partial = mapPartial
 
 export function filter<A, B extends A>(array: A[], guard: Guard<A, B>): B[]
-export function filter<A>(array: A[], predicate: Predicate<A>): A[]
-export function filter(array: any[], predicate: Predicate<any>) {
-  const result: any[] = []
-  for (let i = 0; i < array.length; i++) {
-    const value = array[i]
-    if (predicate(value)) {
-      result.push(value)
-    }
-  }
-  return result
-}
+export function filter<A>(array: A[], predicate: (value: A, index: number) => boolean): A[]
+export function filter(array: any[], predicate: (value: any, index: number) => boolean) {
+         const result: any[] = []
+         for (let i = 0; i < array.length; i++) {
+           const value = array[i]
+           if (predicate(value, i)) {
+             result.push(value)
+           }
+         }
+         return result
+       }
 
 function filterPartial<A, B extends A>(guard: Guard<A, B>): (array: A[]) => B[]
-function filterPartial<A>(predicate: Predicate<A>): (array: A[]) => A[]
-function filterPartial(predicate: Predicate<any>): (array: any[]) => any[] {
+function filterPartial<A>(predicate: (value: A, index: number) => boolean): (array: A[]) => A[]
+function filterPartial(predicate: (value: any, index: number) => boolean): (array: any[]) => any[] {
   return (array: any[]) => filter(array, predicate)
 }
 
@@ -35,15 +39,15 @@ filter.partial = filterPartial
 export const reduce = <A, R>(
   array: A[],
   initial: R,
-  reducer: Reducer<A, R>
+  reducer: (accumulator: R, value: A, index: number) => R
 ) => {
   let result = initial
   for (let i = 0; i < array.length; i++) {
-    result = reducer(result, array[i])
+    result = reducer(result, array[i], i)
   }
   return result
 }
 
-reduce.partial = <A, R>(reducer: Reducer<A, R>) => (initial: R) => (
+reduce.partial = <A, R>(reducer: (accumulator: R, value: A, index: number) => R) => (initial: R) => (
   array: A[]
 ) => reduce(array, initial, reducer)
