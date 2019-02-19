@@ -28,7 +28,7 @@ describe('filter', () => {
   it('should filter by index', () => {
     const filtered: Array<string | number> = filter(
       [11, 'a', 'bb', 12, 'ddd', 33],
-      (_, i) => i % 2 == 0,
+      (_, i) => i % 2 === 0,
     )
     expect(filtered).toEqual([11, 'bb', 'ddd'])
   })

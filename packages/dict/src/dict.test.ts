@@ -24,7 +24,7 @@ describe('filter', () => {
   it('should remove items not matching predicate', () => {
     const filtered: Dictionary<string> = filter(
       { foo: 'bar', bar: 'baz' },
-      k => k !== 'bar'
+      k => k !== 'bar',
     )
     expect(filtered).toEqual({ foo: 'bar' })
   })
@@ -34,7 +34,7 @@ describe('filter', () => {
   it('should return items matching guard as type of guard', () => {
     const filtered: Dictionary<string | number> = filter(
       { a: 11, bb: '12', ddd: 33 },
-      isString
+      isString,
     )
     expect(filtered).toEqual({ bb: '12' })
   })
@@ -53,7 +53,7 @@ describe('reduce', () => {
     const result: number = reduce(
       { foo: 2, bar: 4, baz: 6 },
       0,
-      (r, [_, v]) => r + v
+      (r, [_, v]) => r + v,
     )
     expect(result).toBe(12)
   })
@@ -68,7 +68,7 @@ describe('reduce', () => {
     const result: Array<[String, number]> = reduce(
       { foo: 2, bar: 4, baz: 6 },
       [],
-      (r: Array<[String, number]>, n) => [...r, n]
+      (r: Array<[String, number]>, n) => [...r, n],
     )
     expect(result).toEqual([['foo', 2], ['bar', 4], ['baz', 6]])
   })
