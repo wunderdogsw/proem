@@ -42,8 +42,7 @@
     "url": "https://github.com/wunderdogsw/proem/issues"
   },
   "devDependencies": {
-    "@proem/array": "^0.0.13",
-    "typescript": "^3.1.4"
+    "@proem/array": "^0.0.13"
   },
   "gitHead": "1724f654330c1c1a8631069d2884bc250d795233"
 }
