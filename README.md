@@ -9,6 +9,8 @@ this way the user gets all the packages by adding a single dependency.
 
 ## Developing
 
+[`yarn`](https://yarnpkg.com/lang/en/docs/install) is required, editor with [Prettier](https://prettier.io/) and [TSLint](https://palantir.github.io/tslint/) support is recommended.
+
 ```
 yarn install
 ```
@@ -110,8 +112,8 @@ Edit `package.json`:
   }
 ```
 
-Add a row for the package in TS project composite configurations. References order is also the build order,
-so packages that are dependencies for other packages needs to first in the array.
+Add a row for the package in TS project composite configurations. You might also need to add
+references to the packages own tsconfig files, if the package depends on other proem packages.
 
 `./tsconfig.json`:
 

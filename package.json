@@ -6,7 +6,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged && yarn lint"
     }
   },
   "scripts": {
@@ -15,6 +15,7 @@
     "build": "yarn build:esm && yarn build:commonjs",
     "build:watch": "tsc -b . -w",
     "publish": "yarn build && lerna publish",
+    "lint": "yarn tslint --project ./tsconfig.lint.json",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -26,6 +27,8 @@
     "prettier": "^1.16.4",
     "pretty-quick": "^1.10.0",
     "ts-jest": "^24.0.0",
+    "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.3.3"
   },
   "jest": {
