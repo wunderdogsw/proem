@@ -1,9 +1,0 @@
-{
-  "files": [],
-  "references": [
-    { "path": "function" },
-    { "path": "array" },
-    { "path": "some" },
-    { "path": "pipe" }
-  ]
-}

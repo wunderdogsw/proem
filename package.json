@@ -2,13 +2,13 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build:esm": "tsc -b packages/tsconfig.esm.json",
-    "build:commonjs": "tsc -b packages",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "build:commonjs": "tsc -b .",
     "build": "npm run build:esm && npm run build:commonjs",
     "build:watch": "tsc -b packages -w",
     "publish": "npm run build && lerna publish",
     "test": "jest",
-    "test:watch": "npm test --watch"
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
     "@types/jest": "^23.3.8",

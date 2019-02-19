@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.settings.json",
+  "files": [],
+  "references": [
+    { "path": "packages/array" },
+    { "path": "packages/dict" },
+    { "path": "packages/function" },
+    { "path": "packages/pipe" },
+    { "path": "packages/some" }
+  ]
+}
