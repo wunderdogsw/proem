@@ -1,11 +1,11 @@
-# `array`
+# `@proem/array`
 
-> TODO: description
+Utility package for handling arrays.
 
 ## Usage
 
 ```
-const array = require('array');
+import array from '@proem/array';
 
 // TODO: DEMONSTRATE API
 ```

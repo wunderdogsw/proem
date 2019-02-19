@@ -16,6 +16,12 @@ npm i
 npx lerna bootstrap
 ```
 
+You can remove built files with git:
+
+```
+git clean -dfx
+```
+
 ## Tests
 
 Run `npm test` or `npm run test:watch` in the repository root.
@@ -66,15 +72,17 @@ for TypeScript and for compiling different versions for ES6 and CommonJS modules
 lerna create @proem/<package>
 ```
 
+The package must have an entry point called `index.ts`.
+
 Copy `tsconfig.esm.json` and `tsconfig.json` from another module.
 
 Edit `package.json`:
 
 ```
 {
-  "main": "lib/<package>.js",
-  "module": "esm/<package>.js",
-  "types": "lib/<package>.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
 
   ...
 
