@@ -1,4 +1,4 @@
-import * as some from './some'
+import * as some from './index'
 
 describe('map', () => {
   it('should map non null value', () => {

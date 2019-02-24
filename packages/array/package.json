@@ -1,6 +1,6 @@
 {
   "name": "@proem/array",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "Typescript array utilities",
   "keywords": [
     "ts",
@@ -11,9 +11,9 @@
   "author": "Joni Katajamäki <joni.katajamaki@gmail.com>",
   "homepage": "https://github.com/wunderdogsw/proem",
   "license": "MIT",
-  "main": "lib/array.js",
-  "module": "esm/array.js",
-  "types": "lib/array.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib"
   },
@@ -27,12 +27,8 @@
   "scripts": {
     "build:commonjs": "tsc -b .",
     "build:esm": "tsc -b ./tsconfig.esm.json",
-    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
+    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "1724f654330c1c1a8631069d2884bc250d795233",
-  "devDependencies": {
-    "@proem/function": "^0.0.13",
-    "typescript": "^3.1.4"
-  }
+  "gitHead": "1724f654330c1c1a8631069d2884bc250d795233"
 }

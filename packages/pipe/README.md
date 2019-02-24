@@ -5,7 +5,7 @@ Proem package for composing functions as pipelines.
 ## Usage
 
 ```
-import * as array from '@proem/array'
+import array from '@proem/array'
 import { pipe } from '@proem/pipe'
 
 const longWordsLength = pipe((s: string) => s.split('.'))

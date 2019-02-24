@@ -1,11 +1,11 @@
-# `dict`
+# `@proem/dict`
 
-> TODO: description
+Utility package for managing objects as hashmaps.
 
 ## Usage
 
 ```
-const dict = require('dict');
+import dict from '@proem/dict'
 
 // TODO: DEMONSTRATE API
 ```

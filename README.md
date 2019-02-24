@@ -5,9 +5,41 @@ TypeScript standard library.
 The library is divided into npm packages under the @proem umbrella.
 
 `@proem/all` is a meta package that depends on all the other packages,
-this way the user gets all the packages with a single import.
+this way the user gets all the packages by adding a single dependency.
 
 ## Developing
+
+[`yarn`](https://yarnpkg.com/lang/en/docs/install) is required, editor with [Prettier](https://prettier.io/) and [TSLint](https://palantir.github.io/tslint/) support is recommended.
+
+```
+yarn install
+```
+
+Build & watch:
+
+```
+yarn build:watch
+```
+
+Test & watch:
+
+```
+yarn test:watch
+```
+
+You can remove built files with git (**REMOVES ALL UNCOMMITTED FILES!**):
+
+```
+git clean -dfx
+```
+
+## Tests
+
+Project must be built before running tests.
+
+Run `yarn test` or `yarn test:watch` in the repository root.
+
+## Package structure
 
 The project is setup as a [Lerna](https://lernajs.io/) monorepository.
 
@@ -53,15 +85,17 @@ for TypeScript and for compiling different versions for ES6 and CommonJS modules
 lerna create @proem/<package>
 ```
 
+The package must have an entry point called `src/index.ts`.
+
 Copy `tsconfig.esm.json` and `tsconfig.json` from another module.
 
 Edit `package.json`:
 
 ```
 {
-  "main": "lib/<package>.js",
-  "module": "esm/<package>.js",
-  "types": "lib/<package>.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
 
   ...
 
@@ -75,21 +109,13 @@ Edit `package.json`:
   "scripts": {
     "build:commonjs": "tsc -b .",
     "build:esm": "tsc -b ./tsconfig.esm.json",
-    "prepublishOnly": "npm run build:commonjs && npm run build:esm",
+    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
     ...
-  },
-
-  ...
-
-  "devDependencies": {
-    ...
-    "typescript": "^3.1.4"
   }
-}
 ```
 
-Add a row for the package in TS project composite configurations. References order is also the build order,
-so packages that are dependencies for other packages needs to first in the array.
+Add a row for the package in TS project composite configurations. You might also need to add
+references to the packages own tsconfig files, if the package depends on other proem packages.
 
 `./tsconfig.json`:
 
@@ -114,5 +140,5 @@ so packages that are dependencies for other packages needs to first in the array
 You need to be logged in NPM as a user that is a member of the `@proem` NPM organization.
 
 ```
-npm run publish
+yarn release
 ```

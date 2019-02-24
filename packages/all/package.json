@@ -1,6 +1,6 @@
 {
   "name": "@proem/all",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "Meta package that includes all proem packages",
   "keywords": [
     "proem",
@@ -13,7 +13,7 @@
   "author": "Joni Katajamäki <joni.katajamaki@gmail.com>",
   "homepage": "https://github.com/wunderdogsw/proem#readme",
   "license": "MIT",
-  "main": "lib/all.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -36,14 +36,11 @@
     "url": "https://github.com/wunderdogsw/proem/issues"
   },
   "dependencies": {
-    "@proem/array": "^0.0.13",
-    "@proem/function": "^0.0.13",
-    "@proem/pipe": "^0.0.13",
-    "@proem/some": "^0.0.13",
-    "@proem/dict": "^0.0.13"
+    "@proem/array": "^0.0.15",
+    "@proem/dict": "^0.0.15",
+    "@proem/function": "^0.0.15",
+    "@proem/pipe": "^0.0.15",
+    "@proem/some": "^0.0.15"
   },
-  "gitHead": "1724f654330c1c1a8631069d2884bc250d795233",
-  "devDependencies": {
-    "typescript": "^3.1.4"
-  }
+  "gitHead": "1724f654330c1c1a8631069d2884bc250d795233"
 }
