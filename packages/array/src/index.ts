@@ -89,3 +89,18 @@ export function reverse<A>(array: A[]) {
   }
   return result
 }
+
+export function range(from: number, to: number): number[] {
+  if (to < from) {
+    return []
+  }
+  if (from === to) {
+    return [from]
+  }
+  const result = new Array<number>(to - from)
+  for (let i = 0; i < to; i++) {
+    const n = from + i
+    result[i] = n
+  }
+  return result
+}
