@@ -59,7 +59,7 @@ describe('reduce', () => {
   })
 })
 
-describe(find.name, () => {
+describe('find', () => {
   it('should find first item that matches predicate', () => {
     const items = [
       { kind: 'a', value: 1 },
