@@ -1,4 +1,4 @@
-import { map, filter, reduce, find } from './index'
+import { map, filter, reduce, reverse, find } from './index'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -74,5 +74,24 @@ describe(find.name, () => {
     const items = [1, 2, 3, 4]
     const result = find(items, i => i > 4)
     expect(result).toBeUndefined()
+  })
+})
+
+describe('reverse', () => {
+  it('returns an empty array for empty arrays', () => {
+    const result = reverse([])
+    expect(result).toEqual([])
+  })
+
+  it('return a reversed array', () => {
+    const items = [1, 2, 3, 4]
+    const result = reverse(items)
+    expect(result).toEqual([4, 3, 2, 1])
+  })
+
+  it('should not mutate the input array', () => {
+    const items = [1, 2, 3, 4]
+    const result = reverse(items)
+    expect(items).toEqual([1, 2, 3, 4])
   })
 })
