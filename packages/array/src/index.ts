@@ -121,3 +121,12 @@ export function range(from: number, to: number): number[] {
   }
   return result
 }
+
+export function take<A>(array: A[], n: number): A[] {
+  const count = Math.min(array.length, n)
+  const result = new Array<A>(count)
+  for (let i = 0; i < count; i++) {
+    result[i] = array[i]
+  }
+  return result
+}
