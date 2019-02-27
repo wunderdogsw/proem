@@ -4,6 +4,7 @@
     "semicolon": [true, "never"],
     "no-increment-decrement": false,
     "array-type": [true, "array-simple"],
-    "prefer-array-literal": false
+    "prefer-array-literal": false,
+    "ter-arrow-parens": false
   }
 }

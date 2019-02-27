@@ -6,6 +6,7 @@
     { "path": "packages/array" },
     { "path": "packages/dict" },
     { "path": "packages/pipe" },
-    { "path": "packages/some" }
+    { "path": "packages/some" },
+    { "path": "packages/variant" }
   ]
 }

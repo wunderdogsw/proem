@@ -1,0 +1,43 @@
+{
+  "name": "@proem/variant",
+  "version": "0.0.15",
+  "description": "proem package for handling algebraic data types",
+  "keywords": [
+    "proem",
+    "adt",
+    "sum",
+    "type",
+    "algebraic",
+    "variant"
+  ],
+  "author": "Joni Katajamäki <joni.katajamaki@wunderdog.fi>",
+  "homepage": "https://github.com/wunderdogsw/proem",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "esm"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wunderdogsw/proem.git"
+  },
+  "scripts": {
+    "build:commonjs": "tsc -b .",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wunderdogsw/proem/issues"
+  },
+  "dependencies": {
+    "@proem/array": "^0.0.15"
+  }
+}
