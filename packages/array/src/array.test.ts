@@ -1,4 +1,4 @@
-import { map, filter, reduce, find } from './index'
+import { map, filter, find, range, reduce, reverse } from './index'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -59,7 +59,7 @@ describe('reduce', () => {
   })
 })
 
-describe(find.name, () => {
+describe('find', () => {
   it('should find first item that matches predicate', () => {
     const items = [
       { kind: 'a', value: 1 },
@@ -74,5 +74,46 @@ describe(find.name, () => {
     const items = [1, 2, 3, 4]
     const result = find(items, i => i > 4)
     expect(result).toBeUndefined()
+  })
+})
+
+describe('reverse', () => {
+  it('returns an empty array for empty arrays', () => {
+    const result = reverse([])
+    expect(result).toEqual([])
+  })
+
+  it('return a reversed array', () => {
+    const items = [1, 2, 3, 4]
+    const result = reverse(items)
+    expect(result).toEqual([4, 3, 2, 1])
+  })
+
+  it('should not mutate the input array', () => {
+    const items = [1, 2, 3, 4]
+    const result = reverse(items)
+    expect(items).toEqual([1, 2, 3, 4])
+  })
+})
+
+describe('range', () => {
+  it('should return [0] for range(0, 0)', () => {
+    const result = range(0, 0)
+    expect(result).toEqual([0])
+  })
+
+  it('should fill an array with [1,2,3] with range(1, 3)', () => {
+    const result = range(1, 3)
+    expect(result).toEqual([1, 2, 3])
+  })
+
+  it('should fill an array with [1] with range(1, 1)', () => {
+    const result = range(1, 3)
+    expect(result).toEqual([1, 2, 3])
+  })
+
+  it('should return an empty array where a < b when called with range(a, b)', () => {
+    const result = range(2, 1)
+    expect(result).toEqual([])
   })
 })

@@ -80,3 +80,27 @@ export const find = <A>(
 
 find.partial = <A>(predicate: IndexedPredicate<A>) => (array: A[]) =>
   find(array, predicate)
+
+export function reverse<A>(array: A[]) {
+  const result = new Array<A>(array.length)
+  for (let i = 0; i < array.length; i++) {
+    const target = array.length - i - 1
+    result[target] = array[i]
+  }
+  return result
+}
+
+export function range(from: number, to: number): number[] {
+  if (to < from) {
+    return []
+  }
+  if (from === to) {
+    return [from]
+  }
+  const result = new Array<number>(to - from)
+  for (let i = 0; i < to; i++) {
+    const n = from + i
+    result[i] = n
+  }
+  return result
+}
