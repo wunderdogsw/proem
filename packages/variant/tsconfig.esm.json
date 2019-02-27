@@ -4,5 +4,6 @@
     "outDir": "esm",
     "module": "esnext"
   },
+  "files": ["src/index.ts"],
   "references": [{ "path": "../array" }]
 }

@@ -4,5 +4,6 @@
     "outDir": "lib",
     "rootDir": "src"
   },
-  "exclude": ["lib"]
+  "exclude": ["lib"],
+  "files": ["src/index.ts"]
 }
