@@ -1,4 +1,4 @@
-import { map, filter, reduce, take, find, range, reverse, drop } from './index'
+import { map, filter, drop, range, reduce, take, takeWhile, find } from './index'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -165,5 +165,30 @@ describe('drop', () => {
     const input = [1, 2, 3]
     const result = drop(input, 4)
     expect(result).toEqual([])
+  })
+})
+
+describe('takeWhile', () => {
+  it('should return an empty array when given an empty array', () => {
+    const result = takeWhile([], p => Boolean(p))
+    expect(result).toEqual([])
+  })
+
+  it('should return only the first n items predicate was truthy for', () => {
+    const input = [1, 2, 3, 4, 5, 6]
+    const result = takeWhile(input, p => p < 3)
+    expect(result).toEqual([1, 2])
+  })
+
+  it('should return an empty array, if first element fails the test', () => {
+    const input = [3, 1, 1]
+    const result = takeWhile(input, p => p < 3)
+    expect(result).toEqual([])
+  })
+
+  it('should return the full array, if every element is a match', () => {
+    const input = [1, 2, 3]
+    const result = takeWhile(input, p => true)
+    expect(result).toEqual([1, 2, 3])
   })
 })

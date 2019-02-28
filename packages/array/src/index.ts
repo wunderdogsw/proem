@@ -129,3 +129,11 @@ export function take<A>(array: A[], n: number): A[] {
 export function drop<A>(array: A[], n: number): A[] {
   return array.slice(n, array.length)
 }
+
+export function takeWhile<A>(array: A[], predicate: IndexedPredicate<A>): A[] {
+  const lastIndex = array.findIndex((value, index) => !predicate(value, index))
+  if (lastIndex < 0) {
+    return array
+  }
+  return take(array, lastIndex)
+}
