@@ -33,6 +33,18 @@ You can remove built files with git (**REMOVES ALL UNCOMMITTED FILES!**):
 git clean -dfx
 ```
 
+Development dependencies are added to the root package:
+
+```
+yarn add -D -W <npm-package>
+```
+
+Add a dependency for a specific package:
+
+```
+yarn workspace @proem/<package> add <npm-package>
+```
+
 ## Tests
 
 Project must be built before running tests.
@@ -82,7 +94,7 @@ Lerna handles the creation of the package, but the new package requires some ext
 for TypeScript and for compiling different versions for ES6 and CommonJS modules.
 
 ```
-lerna create @proem/<package>
+npx lerna create @proem/<package>
 ```
 
 The package must have an entry point called `src/index.ts`.

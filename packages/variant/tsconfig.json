@@ -6,5 +6,5 @@
     "declarationDir": "./types"
   },
   "files": ["src/index.ts"],
-  "references": [{ "path": "../function/tsconfig.json" }]
+  "references": [{ "path": "../array" }]
 }

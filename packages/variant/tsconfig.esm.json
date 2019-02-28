@@ -5,5 +5,5 @@
     "module": "esnext"
   },
   "files": ["src/index.ts"],
-  "references": [{ "path": "../function/tsconfig.esm.json" }]
+  "references": [{ "path": "../array" }]
 }

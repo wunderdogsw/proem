@@ -81,6 +81,23 @@ export const find = <A>(
 find.partial = <A>(predicate: IndexedPredicate<A>) => (array: A[]) =>
   find(array, predicate)
 
+// Comparison used by newer ES6 operations like Array.include
+const sameValueZero = (x: unknown, y: unknown) =>
+  x === y ||
+  (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
+
+export function includes<A>(array: ArrayLike<A>, item: A): boolean {
+  if (array.length === 0) {
+    return false
+  }
+  for (let i = 0; i < array.length; i++) {
+    if (sameValueZero(array[i], item)) {
+      return true
+    }
+  }
+  return false
+}
+
 export function reverse<A>(array: A[]) {
   const result = new Array<A>(array.length)
   for (let i = 0; i < array.length; i++) {
