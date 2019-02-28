@@ -137,3 +137,11 @@ export function takeWhile<A>(array: A[], predicate: IndexedPredicate<A>): A[] {
   }
   return take(array, lastIndex)
 }
+
+export function dropWhile<A>(array: A[], predicate: IndexedPredicate<A>): A[] {
+  const lastIndex = array.findIndex((value, index) => !predicate(value, index))
+  if (lastIndex < 0) {
+    return []
+  }
+  return drop(array, lastIndex)
+}

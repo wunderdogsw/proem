@@ -1,4 +1,15 @@
-import { map, filter, drop, range, reduce, take, takeWhile, find } from './index'
+import {
+  drop,
+  dropWhile,
+  filter,
+  find,
+  map,
+  range,
+  reduce,
+  reverse,
+  take,
+  takeWhile,
+} from './index'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -170,25 +181,62 @@ describe('drop', () => {
 
 describe('takeWhile', () => {
   it('should return an empty array when given an empty array', () => {
-    const result = takeWhile([], p => Boolean(p))
+    const result = takeWhile([], value => Boolean(value))
     expect(result).toEqual([])
   })
 
   it('should return only the first n items predicate was truthy for', () => {
     const input = [1, 2, 3, 4, 5, 6]
-    const result = takeWhile(input, p => p < 3)
+    const result = takeWhile(input, value => value < 3)
     expect(result).toEqual([1, 2])
   })
 
   it('should return an empty array, if first element fails the test', () => {
     const input = [3, 1, 1]
-    const result = takeWhile(input, p => p < 3)
+    const result = takeWhile(input, value => value < 3)
     expect(result).toEqual([])
   })
 
   it('should return the full array, if every element is a match', () => {
     const input = [1, 2, 3]
-    const result = takeWhile(input, p => true)
+    const result = takeWhile(input, () => true)
     expect(result).toEqual([1, 2, 3])
+  })
+
+  it('should provide an index variable for predicates', () => {
+    const input = [1, 2, 3]
+    const result = takeWhile(input, (value, index) => index === 0)
+    expect(result).toEqual([1])
+  })
+})
+
+describe('dropWhile', () => {
+  it('should return an empty array when given an empty array', () => {
+    const result = dropWhile([], (value: unknown) => Boolean(value))
+    expect(result).toEqual([])
+  })
+
+  it('should drop all elements the test yields true for', () => {
+    const input = [1, 2, 3]
+    const result = dropWhile(input, value => Boolean(value))
+    expect(result).toEqual([])
+  })
+
+  it('should return the elements after first test fail', () => {
+    const input = [1, 2, 3]
+    const result = dropWhile(input, value => value < 3)
+    expect(result).toEqual([3])
+  })
+
+  it('should drop none if the first test fails', () => {
+    const input = [3, 2, 1]
+    const result = dropWhile(input, value => value < 3)
+    expect(result).toEqual([3, 2, 1])
+  })
+
+  it('should provide the index for predicates', () => {
+    const input = [3, 2, 1]
+    const result = dropWhile(input, (value, index) => index < 1)
+    expect(result).toEqual([2, 1])
   })
 })
