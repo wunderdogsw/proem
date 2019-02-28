@@ -1,4 +1,4 @@
-import { map, filter, reduce, take, find, range, reverse } from './index'
+import { map, filter, reduce, take, find, range, reverse, drop } from './index'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -119,7 +119,7 @@ describe('range', () => {
 })
 
 describe('take', () => {
-  it('should return an empty array for an empty array', () => {
+  it('should return an empty array when given an empty array', () => {
     const result = take([], 1)
     expect(result).toEqual([])
   })
@@ -143,5 +143,27 @@ describe('take', () => {
     const input = [1, 2, 3]
     const result = take(input, 2)
     expect(input).toEqual([1, 2, 3])
+  })
+})
+
+describe('drop', () => {
+  it('should return an empty when given an empty array', () => {
+    expect(drop([], 1)).toEqual([])
+  })
+
+  it('should drop the first n elements of an array', () => {
+    expect(drop([1, 2, 3], 1)).toEqual([2, 3])
+  })
+
+  it('should not mutate the input array', () => {
+    const input = [1, 2, 3]
+    const result = drop(input, 1)
+    expect(input).toEqual([1, 2, 3])
+  })
+
+  it('should return an empty array when dropping beyond capacity', () => {
+    const input = [1, 2, 3]
+    const result = drop(input, 4)
+    expect(result).toEqual([])
   })
 })

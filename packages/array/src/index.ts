@@ -123,10 +123,9 @@ export function range(from: number, to: number): number[] {
 }
 
 export function take<A>(array: A[], n: number): A[] {
-  const count = Math.min(array.length, n)
-  const result = new Array<A>(count)
-  for (let i = 0; i < count; i++) {
-    result[i] = array[i]
-  }
-  return result
+  return array.slice(0, n)
+}
+
+export function drop<A>(array: A[], n: number): A[] {
+  return array.slice(n, array.length)
 }
