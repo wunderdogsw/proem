@@ -123,11 +123,23 @@ export function range(from: number, to: number): number[] {
 }
 
 export function take<A>(array: A[], n: number): A[] {
-  return array.slice(0, n)
+  const count = Math.min(array.length, n)
+  const result = new Array<A>(count)
+  for (let i = 0; i < count; ++i) {
+    result[i] = array[i]
+  }
+  return result
 }
 
 export function drop<A>(array: A[], n: number): A[] {
-  return array.slice(n, array.length)
+  if (n > array.length) {
+    return []
+  }
+  const result = new Array<A>(array.length - n)
+  for (let i = 0; i < result.length; i++) {
+    result[i] = array[n + i]
+  }
+  return result
 }
 
 export function takeWhile<A>(array: A[], predicate: IndexedPredicate<A>): A[] {
