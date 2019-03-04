@@ -20,6 +20,7 @@
     "lib": "lib"
   },
   "files": [
+    "types",
     "lib",
     "esm"
   ],
