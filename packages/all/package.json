@@ -1,6 +1,6 @@
 {
   "name": "@proem/all",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Meta package that includes all proem packages",
   "keywords": [
     "proem",
@@ -36,12 +36,12 @@
     "url": "https://github.com/wunderdogsw/proem/issues"
   },
   "dependencies": {
-    "@proem/array": "^0.0.17",
-    "@proem/dict": "^0.0.17",
-    "@proem/function": "^0.0.17",
-    "@proem/pipe": "^0.0.17",
-    "@proem/some": "^0.0.17",
-    "@proem/variant": "^0.0.17"
+    "@proem/array": "^0.0.18",
+    "@proem/dict": "^0.0.18",
+    "@proem/function": "^0.0.18",
+    "@proem/pipe": "^0.0.18",
+    "@proem/some": "^0.0.18",
+    "@proem/variant": "^0.0.18"
   },
   "gitHead": "1724f654330c1c1a8631069d2884bc250d795233"
 }
