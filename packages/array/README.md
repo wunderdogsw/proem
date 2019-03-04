@@ -1,6 +1,6 @@
 # `@proem/array`
 
-Utility package for handling arrays.
+Utility package for processing arrays.
 
 ## Usage
 
