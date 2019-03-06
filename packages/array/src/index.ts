@@ -86,16 +86,23 @@ const sameValueZero = (x: unknown, y: unknown) =>
   x === y ||
   (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
 
+function findIndex<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): number {
+  for (let i = 0; i < array.length; i++) {
+    if (predicate(array[i], i)) {
+      return i
+    }
+  }
+  return -1
+}
+
 export function includes<A>(array: ArrayLike<A>, item: A): boolean {
   if (array.length === 0) {
     return false
   }
-  for (let i = 0; i < array.length; i++) {
-    if (sameValueZero(array[i], item)) {
-      return true
-    }
-  }
-  return false
+  return findIndex(array, sameValueZero) > -1
 }
 
 export function reverse<A>(array: A[]) {
@@ -122,7 +129,7 @@ export function range(from: number, to: number): number[] {
   return result
 }
 
-export function take<A>(array: A[], n: number): A[] {
+export function take<A>(array: ArrayLike<A>, n: number): A[] {
   const count = Math.min(array.length, n)
   const result = new Array<A>(count)
   for (let i = 0; i < count; ++i) {
@@ -131,7 +138,7 @@ export function take<A>(array: A[], n: number): A[] {
   return result
 }
 
-export function drop<A>(array: A[], n: number): A[] {
+export function drop<A>(array: ArrayLike<A>, n: number): A[] {
   if (n > array.length) {
     return []
   }
@@ -142,16 +149,22 @@ export function drop<A>(array: A[], n: number): A[] {
   return result
 }
 
-export function takeWhile<A>(array: A[], predicate: IndexedPredicate<A>): A[] {
-  const lastIndex = array.findIndex((value, index) => !predicate(value, index))
+export function takeWhile<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): ArrayLike<A> {
+  const lastIndex = findIndex(array, (value, index) => !predicate(value, index))
   if (lastIndex < 0) {
     return array
   }
   return take(array, lastIndex)
 }
 
-export function dropWhile<A>(array: A[], predicate: IndexedPredicate<A>): A[] {
-  const lastIndex = array.findIndex((value, index) => !predicate(value, index))
+export function dropWhile<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): ArrayLike<A> {
+  const lastIndex = findIndex(array, (value, index) => !predicate(value, index))
   if (lastIndex < 0) {
     return []
   }

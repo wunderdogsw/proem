@@ -46,15 +46,15 @@ export declare const find: {
 export declare function includes<A>(array: ArrayLike<A>, item: A): boolean
 export declare function reverse<A>(array: A[]): A[]
 export declare function range(from: number, to: number): number[]
-export declare function take<A>(array: A[], n: number): A[]
-export declare function drop<A>(array: A[], n: number): A[]
+export declare function take<A>(array: ArrayLike<A>, n: number): A[]
+export declare function drop<A>(array: ArrayLike<A>, n: number): A[]
 export declare function takeWhile<A>(
-  array: A[],
+  array: ArrayLike<A>,
   predicate: IndexedPredicate<A>,
-): A[]
+): ArrayLike<A>
 export declare function dropWhile<A>(
-  array: A[],
+  array: ArrayLike<A>,
   predicate: IndexedPredicate<A>,
-): A[]
+): ArrayLike<A>
 export {}
 //# sourceMappingURL=index.d.ts.map
