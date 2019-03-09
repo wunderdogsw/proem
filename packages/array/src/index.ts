@@ -86,16 +86,23 @@ const sameValueZero = (x: unknown, y: unknown) =>
   x === y ||
   (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
 
+function findIndex<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): number {
+  for (let i = 0; i < array.length; i++) {
+    if (predicate(array[i], i)) {
+      return i
+    }
+  }
+  return -1
+}
+
 export function includes<A>(array: ArrayLike<A>, item: A): boolean {
   if (array.length === 0) {
     return false
   }
-  for (let i = 0; i < array.length; i++) {
-    if (sameValueZero(array[i], item)) {
-      return true
-    }
-  }
-  return false
+  return findIndex(array, value => sameValueZero(value, item)) > -1
 }
 
 export function reverse<A>(array: A[]) {
@@ -120,4 +127,46 @@ export function range(from: number, to: number): number[] {
     result[i] = n
   }
   return result
+}
+
+export function take<A>(array: ArrayLike<A>, n: number): A[] {
+  const count = Math.min(array.length, n)
+  const result = new Array<A>(count)
+  for (let i = 0; i < count; ++i) {
+    result[i] = array[i]
+  }
+  return result
+}
+
+export function drop<A>(array: ArrayLike<A>, n: number): A[] {
+  if (n > array.length) {
+    return []
+  }
+  const result = new Array<A>(array.length - n)
+  for (let i = 0; i < result.length; i++) {
+    result[i] = array[n + i]
+  }
+  return result
+}
+
+export function takeWhile<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): ArrayLike<A> {
+  const lastIndex = findIndex(array, (value, index) => !predicate(value, index))
+  if (lastIndex < 0) {
+    return array
+  }
+  return take(array, lastIndex)
+}
+
+export function dropWhile<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): ArrayLike<A> {
+  const lastIndex = findIndex(array, (value, index) => !predicate(value, index))
+  if (lastIndex < 0) {
+    return []
+  }
+  return drop(array, lastIndex)
 }

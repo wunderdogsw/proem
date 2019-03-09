@@ -1,4 +1,16 @@
-import { map, filter, find, range, reduce, reverse } from './index'
+import {
+  drop,
+  dropWhile,
+  filter,
+  find,
+  map,
+  range,
+  reduce,
+  reverse,
+  take,
+  takeWhile,
+  includes,
+} from './index'
 
 describe('map', () => {
   it('should transform items', () => {
@@ -115,5 +127,135 @@ describe('range', () => {
   it('should return an empty array where a < b when called with range(a, b)', () => {
     const result = range(2, 1)
     expect(result).toEqual([])
+  })
+})
+
+describe('take', () => {
+  it('should return an empty array when given an empty array', () => {
+    const result = take([], 1)
+    expect(result).toEqual([])
+  })
+
+  it('should return an empty array when called to take 0', () => {
+    const result = take([1, 2, 3], 0)
+    expect(result).toEqual([])
+  })
+
+  it('should return n elements of a non-empty array', () => {
+    const result = take([1, 2, 3], 2)
+    expect(result).toEqual([1, 2])
+  })
+
+  it('should return the full array, when called with greater than input length', () => {
+    const result = take([1, 2, 3], 4)
+    expect(result).toEqual([1, 2, 3])
+  })
+
+  it('should not mutate the input array', () => {
+    const input = [1, 2, 3]
+    const result = take(input, 2)
+    expect(input).toEqual([1, 2, 3])
+  })
+})
+
+describe('drop', () => {
+  it('should return an empty when given an empty array', () => {
+    expect(drop([], 1)).toEqual([])
+  })
+
+  it('should drop the first n elements of an array', () => {
+    expect(drop([1, 2, 3], 1)).toEqual([2, 3])
+  })
+
+  it('should not mutate the input array', () => {
+    const input = [1, 2, 3]
+    const result = drop(input, 1)
+    expect(input).toEqual([1, 2, 3])
+  })
+
+  it('should return an empty array when dropping beyond capacity', () => {
+    const input = [1, 2, 3]
+    const result = drop(input, 4)
+    expect(result).toEqual([])
+  })
+})
+
+describe('takeWhile', () => {
+  it('should return an empty array when given an empty array', () => {
+    const result = takeWhile([], value => Boolean(value))
+    expect(result).toEqual([])
+  })
+
+  it('should return only the first n items predicate was truthy for', () => {
+    const input = [1, 2, 3, 4, 5, 6]
+    const result = takeWhile(input, value => value < 3)
+    expect(result).toEqual([1, 2])
+  })
+
+  it('should return an empty array, if first element fails the test', () => {
+    const input = [3, 1, 1]
+    const result = takeWhile(input, value => value < 3)
+    expect(result).toEqual([])
+  })
+
+  it('should return the full array, if every element is a match', () => {
+    const input = [1, 2, 3]
+    const result = takeWhile(input, () => true)
+    expect(result).toEqual([1, 2, 3])
+  })
+
+  it('should provide an index variable for predicates', () => {
+    const input = [1, 2, 3]
+    const result = takeWhile(input, (value, index) => index === 0)
+    expect(result).toEqual([1])
+  })
+})
+
+describe('dropWhile', () => {
+  it('should return an empty array when given an empty array', () => {
+    const result = dropWhile([], (value: unknown) => Boolean(value))
+    expect(result).toEqual([])
+  })
+
+  it('should drop all elements the test yields true for', () => {
+    const input = [1, 2, 3]
+    const result = dropWhile(input, value => Boolean(value))
+    expect(result).toEqual([])
+  })
+
+  it('should return the elements after first test fail', () => {
+    const input = [1, 2, 3]
+    const result = dropWhile(input, value => value < 3)
+    expect(result).toEqual([3])
+  })
+
+  it('should drop none if the first test fails', () => {
+    const input = [3, 2, 1]
+    const result = dropWhile(input, value => value < 3)
+    expect(result).toEqual([3, 2, 1])
+  })
+
+  it('should provide the index for predicates', () => {
+    const input = [3, 2, 1]
+    const result = dropWhile(input, (value, index) => index < 1)
+    expect(result).toEqual([2, 1])
+  })
+})
+
+describe('includes', () => {
+  it('should return true for an item that exists', () => {
+    expect(includes([1, 2, 3], 2)).toBe(true)
+  })
+
+  it("should return false for an item that doesn't exits", () => {
+    expect(includes([1, 2, 3], 4)).toBe(false)
+  })
+
+  it('should return true for NaN if array contains NaN', () => {
+    expect(includes([1, 2, NaN], NaN)).toBe(true)
+  })
+
+  it("should return false for NaN if array doesn't contain NaN", () => {
+    expect(includes([1, 2, 3], NaN)).toBe(false)
   })
 })

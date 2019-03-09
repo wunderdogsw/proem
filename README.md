@@ -7,6 +7,16 @@ The library is divided into npm packages under the @proem umbrella.
 `@proem/all` is a meta package that depends on all the other packages,
 this way the user gets all the packages by adding a single dependency.
 
+## Packages
+
+- [`@proem/all`](packages/all/README.md) A meta packagage for everything included in `@proem`
+- [`@proem/array`](packages/array/README.md) A package for handling arrays
+- [`@proem/dict`](./packages/dict/README.md) A package for handling dictionaries (or maps if you'd like).
+- [`@proem/function`](packages/function/README.md) A package for function type aliases and function composition
+- [`@proem/pipe`](packages/pipe/README.md) A package for composing functions as pipelines
+- [`@proem/some`](packages/some/README.md) A package for dealing with `null`able values
+- [`@proem/variant`](packages/variant/README.md) A package for processing variant types (discriminant unions, algebraic types, etc)
+
 ## Developing
 
 [`yarn`](https://yarnpkg.com/lang/en/docs/install) is required, editor with [Prettier](https://prettier.io/) and [TSLint](https://palantir.github.io/tslint/) support is recommended.
