@@ -102,7 +102,7 @@ export function includes<A>(array: ArrayLike<A>, item: A): boolean {
   if (array.length === 0) {
     return false
   }
-  return findIndex(array, sameValueZero) > -1
+  return findIndex(array, value => sameValueZero(value, item)) > -1
 }
 
 export function reverse<A>(array: A[]) {

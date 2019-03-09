@@ -9,6 +9,7 @@ import {
   reverse,
   take,
   takeWhile,
+  includes,
 } from './index'
 
 describe('map', () => {
@@ -238,5 +239,23 @@ describe('dropWhile', () => {
     const input = [3, 2, 1]
     const result = dropWhile(input, (value, index) => index < 1)
     expect(result).toEqual([2, 1])
+  })
+})
+
+describe('includes', () => {
+  it('should return true for an item that exists', () => {
+    expect(includes([1, 2, 3], 2)).toBe(true)
+  })
+
+  it("should return false for an item that doesn't exits", () => {
+    expect(includes([1, 2, 3], 4)).toBe(false)
+  })
+
+  it('should return true for NaN if array contains NaN', () => {
+    expect(includes([1, 2, NaN], NaN)).toBe(true)
+  })
+
+  it("should return false for NaN if array doesn't contain NaN", () => {
+    expect(includes([1, 2, 3], NaN)).toBe(false)
   })
 })
