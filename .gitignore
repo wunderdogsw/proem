@@ -8,3 +8,4 @@ packages/*/node_modules
 *.sw?
 *.tgz
 .vscode/settings.json
+*.test.d.*

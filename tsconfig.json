@@ -7,6 +7,7 @@
     { "path": "packages/dict" },
     { "path": "packages/pipe" },
     { "path": "packages/some" },
-    { "path": "packages/variant" }
+    { "path": "packages/variant" },
+    { "path": "packages/union" }
   ]
 }

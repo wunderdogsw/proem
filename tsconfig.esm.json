@@ -6,6 +6,7 @@
     { "path": "packages/dict/tsconfig.esm.json" },
     { "path": "packages/pipe/tsconfig.esm.json" },
     { "path": "packages/some/tsconfig.esm.json" },
-    { "path": "packages/variant/tsconfig.esm.json" }
+    { "path": "packages/variant/tsconfig.esm.json" },
+    { "path": "packages/union/tsconfig.esm.json" }
   ]
 }
