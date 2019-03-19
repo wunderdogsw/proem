@@ -16,7 +16,7 @@
     "build:watch": "concurrently \"yarn tsc -b -w\" \"yarn rollup -c --watch\"",
     "release": "yarn build && lerna publish",
     "lint": "yarn tslint --project ./tsconfig.lint.json",
-    "clean": "rimraf ./packages/*/lib/**/*.js ./packages/*/lib/**/*.test.* ./packages/*/lib/**/*.js.map",
+    "clean": "rimraf \"./packages/*/lib/**/*.js\" \"./packages/*/lib/**/*.test.*\" \"./packages/*/lib/**/*.js.map\"",
     "test": "jest",
     "test:watch": "jest --watch"
   },
