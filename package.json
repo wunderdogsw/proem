@@ -13,7 +13,7 @@
     "build:esm": "tsc -b ./tsconfig.esm.json",
     "build:commonjs": "tsc -b .",
     "build": "yarn build:esm && yarn build:commonjs",
-    "build:watch": "tsc -b . -w",
+    "build:watch": "concurrently \"yarn tsc -b -w\" \"yarn rollup -c --watch\"",
     "release": "yarn build && lerna publish",
     "lint": "yarn tslint --project ./tsconfig.lint.json",
     "clean": "rimraf ./packages/*/lib/**/*.js ./packages/*/lib/**/*.test.* ./packages/*/lib/**/*.js.map",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.6",
+    "concurrently": "^4.1.0",
     "husky": "^1.3.1",
     "jest": "^24.1.0",
     "lerna": "^3.13.0",
