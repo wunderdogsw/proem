@@ -6,7 +6,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && yarn lint"
+      "pre-commit": "pretty-quick --staged --pattern \"./packages/*/src/**/*.ts\" && yarn lint"
     }
   },
   "scripts": {
