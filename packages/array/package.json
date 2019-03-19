@@ -11,9 +11,9 @@
   "author": "Joni Katajamäki <joni.katajamaki@gmail.com>",
   "homepage": "https://github.com/wunderdogsw/proem",
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "esm/index.js",
-  "types": "types/index.d.ts",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib"
   },
@@ -21,13 +21,9 @@
     "access": "public"
   },
   "files": [
-    "lib",
-    "esm"
+    "lib"
   ],
   "scripts": {
-    "build:commonjs": "tsc -b .",
-    "build:esm": "tsc -b ./tsconfig.esm.json",
-    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "gitHead": "1724f654330c1c1a8631069d2884bc250d795233"

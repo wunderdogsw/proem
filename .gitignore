@@ -1,8 +1,12 @@
-node_modules/
-packages/*/lib
-packages/*/esm
-packages/*/package-lock.json
+/node_modules/
 packages/*/node_modules
+
+# Type definitions are committed, required by TS project references
+packages/*/lib/**/*.test.*
+packages/*/lib/**/*.js
+packages/*/lib/**/*.js.map
+packages/*/src/**/*.js
+
 *.log
 .idea
 *.sw?
