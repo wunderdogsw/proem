@@ -10,9 +10,9 @@
     }
   },
   "scripts": {
-    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "build:esm": "rollup -c",
     "build:commonjs": "tsc -b .",
-    "build": "yarn build:esm && yarn build:commonjs",
+    "build": "yarn build:commonjs && yarn build:esm",
     "build:watch": "concurrently \"yarn tsc -b -w\" \"yarn rollup -c --watch\"",
     "release": "yarn build && lerna publish",
     "lint": "yarn tslint --project ./tsconfig.lint.json",
