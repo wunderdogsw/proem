@@ -1,4 +1,0 @@
-packages/*/src/
-
-packages/*/lib/**/*.test.*
-packages/*/lib/**/*.js.map
