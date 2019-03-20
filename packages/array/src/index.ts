@@ -31,11 +31,11 @@ export function filter(array: any[], predicate: IndexedPredicate<any>) {
   return result
 }
 
-export const reduce = <A, R>(
+export function reduce<A, R>(
   array: A[],
   initial: R,
   reducer: (accumulator: R, value: A, index: number) => R,
-) => {
+) {
   let result = initial
   for (let i = 0; i < array.length; i++) {
     result = reducer(result, array[i], i)
@@ -43,10 +43,10 @@ export const reduce = <A, R>(
   return result
 }
 
-export const find = <A>(
+export function find<A>(
   array: A[],
   predicate: IndexedPredicate<A>,
-): A | undefined => {
+): A | undefined {
   for (let i = 0; i < array.length; i++) {
     const item = array[i]
     if (predicate(item, i)) {
@@ -57,9 +57,12 @@ export const find = <A>(
 }
 
 // Comparison used by newer ES6 operations like Array.include
-const sameValueZero = (x: unknown, y: unknown) =>
-  x === y ||
-  (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
+function sameValueZero(x: unknown, y: unknown) {
+  return (
+    x === y ||
+    (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
+  )
+}
 
 function findIndex<A>(
   array: ArrayLike<A>,
