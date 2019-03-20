@@ -1,0 +1,36 @@
+{
+  "name": "@proem/union",
+  "version": "0.0.19",
+  "description": "proem package for handling union types",
+  "keywords": [
+    "proem",
+    "union",
+    "type",
+    "functional"
+  ],
+  "author": "Joni Katajamäki <joni.katajamaki@wunderdog.fi>",
+  "homepage": "https://github.com/wunderdogsw/proem",
+  "license": "MIT",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wunderdogsw/proem.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/wunderdogsw/proem/issues"
+  }
+}

@@ -6,6 +6,7 @@
     { "path": "packages/pipe" },
     { "path": "packages/some" },
     { "path": "packages/variant" },
+    { "path": "packages/union" },
     { "path": "packages/all" }
   ],
   "exclude": ["**/*"]

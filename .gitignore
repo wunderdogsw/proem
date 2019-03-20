@@ -12,3 +12,4 @@ packages/*/src/**/*.js
 *.sw?
 *.tgz
 .vscode/settings.json
+*.test.d.*
