@@ -4,6 +4,7 @@ export declare type IndexedGuard<A, B extends A> = (value: A, index: number) => 
 export declare function fill<A>(value: A, length: number): A[];
 export declare function generate<A>(createItem: (index: number) => A, length: number): A[];
 export declare function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[];
+export declare function flatMap<A, B>(array: ArrayLike<A>, mapFn: IndexedMap<A, ArrayLike<B>>): B[];
 export declare function filter<A, B extends A>(array: A[], guard: IndexedGuard<A, B>): B[];
 export declare function filter<A>(array: A[], predicate: IndexedPredicate<A>): A[];
 export declare function reduce<A, R>(array: A[], initial: R, reducer: (accumulator: R, value: A, index: number) => R): R;

@@ -40,6 +40,20 @@ export function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[] {
   return result
 }
 
+export function flatMap<A, B>(
+  array: ArrayLike<A>,
+  mapFn: IndexedMap<A, ArrayLike<B>>,
+): B[] {
+  const result: B[] = []
+  for (let i = 0; i < array.length; i++) {
+    const items = mapFn(array[i], i)
+    for (let j = 0; j < items.length; j++) {
+      result.push(items[j])
+    }
+  }
+  return result
+}
+
 export function filter<A, B extends A>(
   array: A[],
   guard: IndexedGuard<A, B>,
