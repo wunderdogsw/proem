@@ -16,6 +16,7 @@ this way the user gets all the packages by adding a single dependency.
 - [`@proem/pipe`](packages/pipe/README.md) A package for composing functions as pipelines
 - [`@proem/some`](packages/some/README.md) A package for dealing with `null`able values
 - [`@proem/variant`](packages/variant/README.md) A package for processing variant types (discriminant unions, algebraic types, etc)
+- [`@proem/union`](packages/union/README.md) A package for processing union types
 
 ## Developing
 
@@ -115,25 +116,9 @@ Edit `package.json`:
 
 ```
 {
-  "main": "lib/index.js",
-  "module": "esm/index.js",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.js",
   "types": "lib/index.d.ts",
-
-  ...
-
-  "files": [
-    "lib",
-    "esm"
-  ],
-
-  ...
-
-  "scripts": {
-    "build:commonjs": "tsc -b .",
-    "build:esm": "tsc -b ./tsconfig.esm.json",
-    "prepublishOnly": "yarn build:commonjs && yarn build:esm",
-    ...
-  }
 ```
 
 Add a row for the package in TS project composite configurations. You might also need to add
@@ -145,15 +130,6 @@ references to the packages own tsconfig files, if the package depends on other p
   "references": [
     ...
     { "path": packages/"<package>" }
-  ]
-```
-
-`./tsconfig.esm.json`:
-
-```
-  "references": [
-    ...
-    { "path": "packages/<package>/tsconfig.esm.json" }
   ]
 ```
 
