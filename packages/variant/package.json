@@ -1,6 +1,6 @@
 {
   "name": "@proem/variant",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "proem package for handling algebraic data types",
   "keywords": [
     "proem",
@@ -33,7 +33,7 @@
     "url": "https://github.com/wunderdogsw/proem/issues"
   },
   "dependencies": {
-    "@proem/array": "^0.0.22"
+    "@proem/array": "^0.0.23"
   },
   "gitHead": "49641f4eda8b5eb9e9d121b91e074a9afeb3a348"
 }
