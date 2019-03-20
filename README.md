@@ -119,6 +119,10 @@ Edit `package.json`:
   "main": "lib/index.cjs.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    ...
+  }
 ```
 
 Add a row for the package in TS project composite configurations. You might also need to add

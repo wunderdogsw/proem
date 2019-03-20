@@ -1,4 +1,4 @@
-import { Predicate, Guard, Reducer, UnaryFn, BinaryFn } from '@proem/function'
+import { Guard, Reducer, BinaryFn } from '@proem/function'
 
 export interface Dictionary<A> {
   [key: string]: A
