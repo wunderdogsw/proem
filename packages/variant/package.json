@@ -34,5 +34,6 @@
   },
   "dependencies": {
     "@proem/array": "^0.0.20"
-  }
+  },
+  "gitHead": "49641f4eda8b5eb9e9d121b91e074a9afeb3a348"
 }

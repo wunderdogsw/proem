@@ -24,7 +24,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "1724f654330c1c1a8631069d2884bc250d795233",
+  "gitHead": "49641f4eda8b5eb9e9d121b91e074a9afeb3a348",
   "dependencies": {
     "@proem/function": "^0.0.20"
   }
