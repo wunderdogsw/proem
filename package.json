@@ -12,8 +12,9 @@
   "scripts": {
     "build:esm": "rollup -c",
     "build:commonjs": "tsc -b .",
-    "build": "yarn build:commonjs && yarn build:esm",
-    "build:watch": "concurrently \"yarn tsc -b -w\" \"yarn rollup -c --watch\"",
+    "build": "yarn build:commonjs && yarn run build:esm",
+    "rollup:watch": "rollup -c --watch --silent",
+    "build:watch": "concurrently \"yarn tsc -b -w\" \"yarn run --silent rollup:watch\"",
     "release": "yarn build && lerna publish",
     "lint": "yarn tslint --project ./tsconfig.lint.json",
     "clean": "rimraf \"./packages/*/lib/**/*.js\" \"./packages/*/lib/**/*.test.*\" \"./packages/*/lib/**/*.js.map\"",
