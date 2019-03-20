@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
+    "newLine": "LF",
     "declaration": true,
     "declarationMap": true,
     "removeComments": true,
@@ -12,5 +13,5 @@
     "moduleResolution": "node",
     "lib": ["esnext"]
   },
-  "exclude": ["**/esm/*", "**/lib/*"]
+  "exclude": ["**/lib/*"]
 }
