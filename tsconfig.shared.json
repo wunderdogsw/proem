@@ -5,7 +5,6 @@
     "newLine": "LF",
     "declaration": true,
     "declarationMap": true,
-    "removeComments": true,
     "sourceMap": true,
     "strict": true,
     "composite": true,
