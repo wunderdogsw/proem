@@ -1,6 +1,6 @@
 {
   "name": "@proem/function",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Proem package for function types and composition",
   "keywords": [
     "ts",
