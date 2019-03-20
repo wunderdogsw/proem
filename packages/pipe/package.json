@@ -20,9 +20,6 @@
   "directories": {
     "lib": "lib"
   },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "access": "public"
   },

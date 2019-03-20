@@ -13,3 +13,4 @@ packages/*/src/**/*.js
 *.tgz
 .vscode/settings.json
 *.test.d.*
+.DS_Store
