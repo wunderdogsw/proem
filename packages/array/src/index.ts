@@ -18,6 +18,20 @@ export function fill<A>(value: A, length: number): A[] {
   return array
 }
 
+export function generate<A>(
+  createItem: (index: number) => A,
+  length: number,
+): A[] {
+  if (length < 0) {
+    throw Error('array.generate was given negative length')
+  }
+  const array = new Array<A>(length)
+  for (let i = 0; i < length; i++) {
+    array[i] = createItem(i)
+  }
+  return array
+}
+
 export function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[] {
   const result = new Array<B>(array.length)
   for (let i = 0; i < array.length; i++) {

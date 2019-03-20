@@ -11,6 +11,7 @@ import {
   takeWhile,
   includes,
   fill,
+  generate,
 } from './index'
 
 describe('fill', () => {
@@ -27,6 +28,24 @@ describe('fill', () => {
   it('should throw if given negative length', () => {
     expect(() => fill(9, -10)).toThrowError(
       'array.fill was given negative length',
+    )
+  })
+})
+
+describe('generate', () => {
+  it('should create an array with generated items', () => {
+    const result = generate(i => i + 1, 5)
+    expect(result).toEqual([1, 2, 3, 4, 5])
+  })
+
+  it('should create an empty array', () => {
+    const result = generate(i => i + 1, 0)
+    expect(result).toEqual([])
+  })
+
+  it('should throw if given negative length', () => {
+    expect(() => generate(i => i + 1, -10)).toThrowError(
+      'array.generate was given negative length',
     )
   })
 })
