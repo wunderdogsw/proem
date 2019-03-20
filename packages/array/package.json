@@ -1,6 +1,6 @@
 {
   "name": "@proem/array",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Typescript array utilities",
   "keywords": [
     "ts",

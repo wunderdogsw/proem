@@ -1,6 +1,6 @@
 {
   "name": "@proem/dict",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Typescript dictionary utilities",
   "keywords": [
     "ts",
@@ -26,6 +26,6 @@
   },
   "gitHead": "49641f4eda8b5eb9e9d121b91e074a9afeb3a348",
   "dependencies": {
-    "@proem/function": "^0.0.20"
+    "@proem/function": "^0.0.21"
   }
 }
