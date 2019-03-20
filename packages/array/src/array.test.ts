@@ -44,14 +44,6 @@ describe('filter', () => {
     )
     expect(filtered).toEqual([11, 'bb', 'ddd'])
   })
-
-  describe('filter.partial', () => {
-    it('should return items matching guard as type of guard', () => {
-      const items = [11, 'a', 'bb', 12, 'ddd', 33]
-      const filtered: string[] = filter.partial(isString)(items)
-      expect(filtered).toEqual(['a', 'bb', 'ddd'])
-    })
-  })
 })
 
 describe('reduce', () => {

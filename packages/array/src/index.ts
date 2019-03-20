@@ -15,12 +15,6 @@ export function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[] {
   return result
 }
 
-function mapPartial<A, B>(mapFn: IndexedMap<A, B>): (array: A[]) => B[] {
-  return (array: A[]) => map(array, mapFn)
-}
-
-map.partial = mapPartial
-
 export function filter<A, B extends A>(
   array: A[],
   guard: IndexedGuard<A, B>,
@@ -37,18 +31,6 @@ export function filter(array: any[], predicate: IndexedPredicate<any>) {
   return result
 }
 
-function filterPartial<A, B extends A>(
-  guard: IndexedGuard<A, B>,
-): (array: A[]) => B[]
-function filterPartial<A>(predicate: IndexedPredicate<A>): (array: A[]) => A[]
-function filterPartial(
-  predicate: IndexedPredicate<any>,
-): (array: any[]) => any[] {
-  return (array: any[]) => filter(array, predicate)
-}
-
-filter.partial = filterPartial
-
 export const reduce = <A, R>(
   array: A[],
   initial: R,
@@ -60,10 +42,6 @@ export const reduce = <A, R>(
   }
   return result
 }
-
-reduce.partial = <A, R>(
-  reducer: (accumulator: R, value: A, index: number) => R,
-) => (initial: R) => (array: A[]) => reduce(array, initial, reducer)
 
 export const find = <A>(
   array: A[],
@@ -77,9 +55,6 @@ export const find = <A>(
   }
   return undefined
 }
-
-find.partial = <A>(predicate: IndexedPredicate<A>) => (array: A[]) =>
-  find(array, predicate)
 
 // Comparison used by newer ES6 operations like Array.include
 const sameValueZero = (x: unknown, y: unknown) =>

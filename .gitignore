@@ -14,3 +14,4 @@ packages/*/src/**/*.js
 .vscode/settings.json
 *.test.d.*
 .DS_Store
+*.tsbuildinfo
