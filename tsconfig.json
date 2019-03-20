@@ -1,6 +1,4 @@
 {
-  "extends": "./tsconfig.settings.json",
-  "files": [],
   "references": [
     { "path": "packages/function" },
     { "path": "packages/array" },
@@ -8,6 +6,8 @@
     { "path": "packages/pipe" },
     { "path": "packages/some" },
     { "path": "packages/variant" },
-    { "path": "packages/union" }
-  ]
+    { "path": "packages/union" },
+    { "path": "packages/all" }
+  ],
+  "exclude": ["**/*"]
 }

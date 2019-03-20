@@ -37,10 +37,10 @@ Test & watch:
 yarn test:watch
 ```
 
-You can remove built files with git (**REMOVES ALL UNCOMMITTED FILES!**):
+Remove built files:
 
 ```
-git clean -dfx
+yarn clean
 ```
 
 Development dependencies are added to the root package:

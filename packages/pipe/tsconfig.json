@@ -1,9 +1,9 @@
 {
-  "extends": "../../tsconfig.settings.json",
+  "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
-    "outDir": "lib",
     "rootDir": "src",
-    "declarationDir": "./types"
+    "outDir": "lib"
   },
-  "files": ["src/index.ts"]
+  "include": ["src/**/*.ts"],
+  "references": [{ "path": "../array" }]
 }

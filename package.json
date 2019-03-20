@@ -6,27 +6,34 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && yarn lint"
+      "pre-commit": "pretty-quick --staged --pattern \"./packages/*/src/**/*.ts\" && yarn lint"
     }
   },
   "scripts": {
-    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "build:esm": "rollup -c",
     "build:commonjs": "tsc -b .",
-    "build": "yarn build:esm && yarn build:commonjs",
-    "build:watch": "tsc -b . -w",
+    "build": "yarn build:commonjs && yarn run build:esm",
+    "rollup:watch": "rollup -c --watch --silent",
+    "build:watch": "concurrently \"yarn tsc -b -w\" \"yarn run --silent rollup:watch\"",
     "release": "yarn build && lerna publish",
     "lint": "yarn tslint --project ./tsconfig.lint.json",
+    "clean": "rimraf \"./packages/*/lib/**/*.js\" \"./packages/*/lib/**/*.test.*\" \"./packages/*/lib/**/*.js.map\"",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@types/jest": "^24.0.6",
+    "concurrently": "^4.1.0",
     "husky": "^1.3.1",
     "jest": "^24.1.0",
     "lerna": "^3.13.0",
     "prettier": "^1.16.4",
     "pretty-quick": "^1.10.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.6.0",
+    "rollup-plugin-auto-external": "^2.0.0",
     "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.3",
     "tslint": "^5.12.1",
     "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.3.3"
