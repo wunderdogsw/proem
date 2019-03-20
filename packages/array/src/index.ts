@@ -7,6 +7,17 @@ export type IndexedGuard<A, B extends A> = (
   index: number,
 ) => value is B
 
+export function fill<A>(value: A, length: number): A[] {
+  if (length < 0) {
+    throw Error('array.fill was given negative length')
+  }
+  const array = new Array<A>(length)
+  for (let i = 0; i < length; i++) {
+    array[i] = value
+  }
+  return array
+}
+
 export function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[] {
   const result = new Array<B>(array.length)
   for (let i = 0; i < array.length; i++) {

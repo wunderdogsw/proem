@@ -10,7 +10,26 @@ import {
   take,
   takeWhile,
   includes,
+  fill,
 } from './index'
+
+describe('fill', () => {
+  it('should create an array filled with single item', () => {
+    const result = fill(9, 5)
+    expect(result).toEqual([9, 9, 9, 9, 9])
+  })
+
+  it('should create an empty array', () => {
+    const result = fill(9, 0)
+    expect(result).toEqual([])
+  })
+
+  it('should throw if given negative length', () => {
+    expect(() => fill(9, -10)).toThrowError(
+      'array.fill was given negative length',
+    )
+  })
+})
 
 describe('map', () => {
   it('should transform items', () => {
