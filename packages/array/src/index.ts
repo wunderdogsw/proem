@@ -32,7 +32,7 @@ export function generate<A>(
   return array
 }
 
-export function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[] {
+export function map<A, B>(array: ArrayLike<A>, mapfn: IndexedMap<A, B>): B[] {
   const result = new Array<B>(array.length)
   for (let i = 0; i < array.length; i++) {
     result[i] = mapfn(array[i], i)
@@ -55,11 +55,17 @@ export function flatMap<A, B>(
 }
 
 export function filter<A, B extends A>(
-  array: A[],
+  array: ArrayLike<A>,
   guard: IndexedGuard<A, B>,
 ): B[]
-export function filter<A>(array: A[], predicate: IndexedPredicate<A>): A[]
-export function filter(array: any[], predicate: IndexedPredicate<any>) {
+export function filter<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): A[]
+export function filter(
+  array: ArrayLike<any>,
+  predicate: IndexedPredicate<any>,
+) {
   const result: any[] = []
   for (let i = 0; i < array.length; i++) {
     const value = array[i]
@@ -71,7 +77,7 @@ export function filter(array: any[], predicate: IndexedPredicate<any>) {
 }
 
 export function reduce<A, R>(
-  array: A[],
+  array: ArrayLike<A>,
   initial: R,
   reducer: (accumulator: R, value: A, index: number) => R,
 ) {
@@ -83,7 +89,7 @@ export function reduce<A, R>(
 }
 
 export function find<A>(
-  array: A[],
+  array: ArrayLike<A>,
   predicate: IndexedPredicate<A>,
 ): A | undefined {
   for (let i = 0; i < array.length; i++) {
@@ -122,7 +128,7 @@ export function includes<A>(array: ArrayLike<A>, item: A): boolean {
   return findIndex(array, value => sameValueZero(value, item)) > -1
 }
 
-export function reverse<A>(array: A[]) {
+export function reverse<A>(array: ArrayLike<A>) {
   const result = new Array<A>(array.length)
   for (let i = 0; i < array.length; i++) {
     const target = array.length - i - 1
