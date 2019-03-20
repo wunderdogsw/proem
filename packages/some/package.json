@@ -1,6 +1,6 @@
 {
   "name": "@proem/some",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Proem package for handling possibly null values",
   "keywords": [
     "null",

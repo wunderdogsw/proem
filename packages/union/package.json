@@ -1,6 +1,6 @@
 {
   "name": "@proem/union",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "proem package for handling union types",
   "keywords": [
     "proem",
