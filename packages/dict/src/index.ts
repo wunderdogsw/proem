@@ -17,12 +17,6 @@ export function map<A, B>(
   return result
 }
 
-map.partial = function mapPartial<A, B>(
-  mapFn: BinaryFn<string, A, B>,
-): (dict: Dictionary<A>) => Dictionary<B> {
-  return (dict: Dictionary<A>) => map(dict, mapFn)
-}
-
 export function filter<A, B extends A>(
   dict: Dictionary<A>,
   guard: Guard<A, B>,
@@ -46,20 +40,6 @@ export function filter(
   return result
 }
 
-function filterPartial<A, B extends A>(
-  guard: Guard<A, B>,
-): (dict: Dictionary<A>) => Dictionary<B>
-function filterPartial<A>(
-  predicate: (index: string, value: A) => boolean,
-): (dict: Dictionary<A>) => Dictionary<A>
-function filterPartial(
-  predicate: (index: string, value: any) => boolean,
-): (dict: Dictionary<any>) => Dictionary<any> {
-  return (dict: Dictionary<any>) => filter(dict, predicate)
-}
-
-filter.partial = filterPartial
-
 export const reduce = <A, R>(
   dict: Dictionary<A>,
   initial: R,
@@ -74,7 +54,3 @@ export const reduce = <A, R>(
   }
   return result
 }
-
-reduce.partial = <A, R>(reducer: Reducer<[string, A], R>) => (initial: R) => (
-  dict: Dictionary<A>,
-) => reduce(dict, initial, reducer)

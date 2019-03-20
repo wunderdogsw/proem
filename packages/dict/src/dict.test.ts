@@ -10,14 +10,6 @@ describe('map', () => {
     const transformed: Dictionary<string> = map({ foo: 'bar' }, (_, v) => v)
     expect(transformed).toEqual({ foo: 'bar' })
   })
-
-  describe('map.partial', () => {
-    it('should catenate keys and values', () => {
-      const catenatingMapping = map.partial((k, v) => k + v)
-      const transformed = catenatingMapping({ foo: 'bar' })
-      expect(transformed).toEqual({ foo: 'foobar' })
-    })
-  })
 })
 
 describe('filter', () => {
@@ -37,14 +29,6 @@ describe('filter', () => {
       isString,
     )
     expect(filtered).toEqual({ bb: '12' })
-  })
-
-  describe('filter.partial', () => {
-    it('should return items matching guard as type of guard', () => {
-      const items = { a: 11, bb: '12', ddd: 33 }
-      const filtered = filter.partial(isString)(items)
-      expect(filtered).toEqual({ bb: '12' })
-    })
   })
 })
 
