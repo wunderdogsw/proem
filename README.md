@@ -56,6 +56,14 @@ Add a dependency for a specific package:
 yarn workspace @proem/<package> add <npm-package>
 ```
 
+Run benchmarks files (\*.bench.ts):
+
+```
+yarn bench
+```
+
+Most benchmarks are disabled, add `.run()` after a suite to run them
+
 ## Tests
 
 Project must be built before running tests.
