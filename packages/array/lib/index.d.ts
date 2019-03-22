@@ -1,8 +1,8 @@
 export declare type IndexedMap<A, B> = (value: A, index: number) => B;
 export declare type IndexedPredicate<A> = (value: A, index: number) => boolean;
 export declare type IndexedGuard<A, B extends A> = (value: A, index: number) => value is B;
-export declare function fill<A>(value: A, length: number): A[];
 export declare function generate<A>(createItem: (index: number) => A, length: number): A[];
+export declare function fill<A>(value: A, length: number): A[];
 export declare function map<A, B>(array: ArrayLike<A>, mapfn: IndexedMap<A, B>): B[];
 export declare function flatMap<A, B>(array: ArrayLike<A>, mapFn: IndexedMap<A, ArrayLike<B>>): B[];
 export declare function filter<A, B extends A>(array: ArrayLike<A>, guard: IndexedGuard<A, B>): B[];

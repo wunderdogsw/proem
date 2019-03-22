@@ -27,9 +27,7 @@ describe('fill', () => {
   })
 
   it('should throw if given negative length', () => {
-    expect(() => fill(9, -10)).toThrowError(
-      'array.fill was given negative length',
-    )
+    expect(() => fill(9, -10)).toThrowError("length can't be negative")
   })
 })
 
@@ -46,7 +44,7 @@ describe('generate', () => {
 
   it('should throw if given negative length', () => {
     expect(() => generate(i => i + 1, -10)).toThrowError(
-      'array.generate was given negative length',
+      "length can't be negative",
     )
   })
 })
