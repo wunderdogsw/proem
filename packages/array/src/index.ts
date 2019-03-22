@@ -7,7 +7,25 @@ export type IndexedGuard<A, B extends A> = (
   index: number,
 ) => value is B
 
-export function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[] {
+export function generate<A>(
+  createItem: (index: number) => A,
+  length: number,
+): A[] {
+  if (length < 0) {
+    throw Error("length can't be negative")
+  }
+  const array = new Array<A>(length)
+  for (let i = 0; i < length; i++) {
+    array[i] = createItem(i)
+  }
+  return array
+}
+
+export function fill<A>(value: A, length: number): A[] {
+  return generate(() => value, length)
+}
+
+export function map<A, B>(array: ArrayLike<A>, mapfn: IndexedMap<A, B>): B[] {
   const result = new Array<B>(array.length)
   for (let i = 0; i < array.length; i++) {
     result[i] = mapfn(array[i], i)
@@ -15,12 +33,32 @@ export function map<A, B>(array: A[], mapfn: IndexedMap<A, B>): B[] {
   return result
 }
 
+export function flatMap<A, B>(
+  array: ArrayLike<A>,
+  mapFn: IndexedMap<A, ArrayLike<B>>,
+): B[] {
+  const result: B[] = []
+  for (let i = 0; i < array.length; i++) {
+    const items = mapFn(array[i], i)
+    for (let j = 0; j < items.length; j++) {
+      result.push(items[j])
+    }
+  }
+  return result
+}
+
 export function filter<A, B extends A>(
-  array: A[],
+  array: ArrayLike<A>,
   guard: IndexedGuard<A, B>,
 ): B[]
-export function filter<A>(array: A[], predicate: IndexedPredicate<A>): A[]
-export function filter(array: any[], predicate: IndexedPredicate<any>) {
+export function filter<A>(
+  array: ArrayLike<A>,
+  predicate: IndexedPredicate<A>,
+): A[]
+export function filter(
+  array: ArrayLike<any>,
+  predicate: IndexedPredicate<any>,
+) {
   const result: any[] = []
   for (let i = 0; i < array.length; i++) {
     const value = array[i]
@@ -31,11 +69,11 @@ export function filter(array: any[], predicate: IndexedPredicate<any>) {
   return result
 }
 
-export const reduce = <A, R>(
-  array: A[],
+export function reduce<A, R>(
+  array: ArrayLike<A>,
   initial: R,
   reducer: (accumulator: R, value: A, index: number) => R,
-) => {
+) {
   let result = initial
   for (let i = 0; i < array.length; i++) {
     result = reducer(result, array[i], i)
@@ -43,10 +81,10 @@ export const reduce = <A, R>(
   return result
 }
 
-export const find = <A>(
-  array: A[],
+export function find<A>(
+  array: ArrayLike<A>,
   predicate: IndexedPredicate<A>,
-): A | undefined => {
+): A | undefined {
   for (let i = 0; i < array.length; i++) {
     const item = array[i]
     if (predicate(item, i)) {
@@ -57,9 +95,12 @@ export const find = <A>(
 }
 
 // Comparison used by newer ES6 operations like Array.include
-const sameValueZero = (x: unknown, y: unknown) =>
-  x === y ||
-  (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
+function sameValueZero(x: unknown, y: unknown) {
+  return (
+    x === y ||
+    (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
+  )
+}
 
 function findIndex<A>(
   array: ArrayLike<A>,
@@ -80,7 +121,7 @@ export function includes<A>(array: ArrayLike<A>, item: A): boolean {
   return findIndex(array, value => sameValueZero(value, item)) > -1
 }
 
-export function reverse<A>(array: A[]) {
+export function reverse<A>(array: ArrayLike<A>) {
   const result = new Array<A>(array.length)
   for (let i = 0; i < array.length; i++) {
     const target = array.length - i - 1

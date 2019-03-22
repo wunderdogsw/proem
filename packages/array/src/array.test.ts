@@ -10,7 +10,44 @@ import {
   take,
   takeWhile,
   includes,
+  fill,
+  generate,
+  flatMap,
 } from './index'
+
+describe('fill', () => {
+  it('should create an array filled with single item', () => {
+    const result = fill(9, 5)
+    expect(result).toEqual([9, 9, 9, 9, 9])
+  })
+
+  it('should create an empty array', () => {
+    const result = fill(9, 0)
+    expect(result).toEqual([])
+  })
+
+  it('should throw if given negative length', () => {
+    expect(() => fill(9, -10)).toThrowError("length can't be negative")
+  })
+})
+
+describe('generate', () => {
+  it('should create an array with generated items', () => {
+    const result = generate(i => i + 1, 5)
+    expect(result).toEqual([1, 2, 3, 4, 5])
+  })
+
+  it('should create an empty array', () => {
+    const result = generate(i => i + 1, 0)
+    expect(result).toEqual([])
+  })
+
+  it('should throw if given negative length', () => {
+    expect(() => generate(i => i + 1, -10)).toThrowError(
+      "length can't be negative",
+    )
+  })
+})
 
 describe('map', () => {
   it('should transform items', () => {
@@ -21,6 +58,23 @@ describe('map', () => {
   it('should return indexes for items', () => {
     const transformed = map(['a', 'bb', 'ccc'], (n, i) => n.length * i)
     expect(transformed).toEqual([0, 2, 6])
+  })
+})
+
+describe('flatMap', () => {
+  it('should flatten arrays', () => {
+    const result = flatMap([1, 2, 3], (v, i) => [v, i])
+    expect(result).toEqual([1, 0, 2, 1, 3, 2])
+  })
+
+  it('should return empty array if given an empty array', () => {
+    const result = flatMap([], () => [1, 2])
+    expect(result).toEqual([])
+  })
+
+  it('should return empty array if all steps return empty arrays', () => {
+    const result = flatMap([1, 2, 3], () => [])
+    expect(result).toEqual([])
   })
 })
 
