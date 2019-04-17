@@ -13,8 +13,8 @@ export type VariantTags<V extends Variant<string>> = V extends Variant<
 /**
  * Returns the provided tags in an tuple.
  */
-export function tags<Tags extends string[]>(...tags: Tags): Tags {
-  return tags
+export function tags<Tags extends string[]>(...tagArgs: Tags): Tags {
+  return tagArgs
 }
 
 /**
@@ -24,9 +24,9 @@ export function tags<Tags extends string[]>(...tags: Tags): Tags {
  */
 export function oneOf<V extends Variant<string>, Tags extends V['type']>(
   variant: V,
-  tags: Tags[],
+  tagsArray: Tags[],
 ): variant is OneOf<V, Tags> {
-  return array.includes(tags, variant.type)
+  return array.includes(tagsArray, variant.type)
 }
 
 /**
@@ -65,7 +65,7 @@ export function map<V extends Variant<string>, A>(
       }
       return or(variant)
     }
-    return caseFn(variant as any)
+    return caseFn(variant as OneOf<V, V['type']>)
   }
 }
 
@@ -95,7 +95,7 @@ export function reducer<State, V extends Variant<string>>(
     if (!arm) {
       return state
     }
-    return arm(state, variant as any)
+    return arm(state, variant as OneOf<V, VariantTags<V>>)
   }
 }
 

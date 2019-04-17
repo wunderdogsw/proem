@@ -33,10 +33,13 @@ type Op = Add | Sub | Increment | Decrement | Div
 
 const op = (v: Op): Op => v
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function ignore<T>(_value: T): void {}
+
 describe('tags', () => {
   it('should infer tag types', () => {
     const tagsInferred = variant.tags('a', 'b', 'c')
-    const tagsTuple: ['a', 'b', 'c'] = tagsInferred
+    ignore<['a', 'b', 'c']>(tagsInferred)
   })
 })
 
@@ -91,9 +94,9 @@ describe('oneOf', () => {
   it('should refine the type in an if statement', () => {
     const inc = op({ type: 'increment', value: 1 })
     if (variant.oneOf(inc, ['div', 'sub'])) {
-      const divOrSub: Div | Sub = inc
+      ignore<Div | Sub>(inc)
     } else {
-      const or: Add | Sub | Increment | Decrement = inc
+      ignore<Add | Sub | Increment | Decrement>(inc)
     }
   })
 })

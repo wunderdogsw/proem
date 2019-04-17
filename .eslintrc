@@ -1,0 +1,54 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "jest"],
+  "env": {
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/indent": ["error", 2],
+    "import/no-unresolved": 0,
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "import/export": 0,
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      { "allowExpressions": true }
+    ],
+    "@typescript-eslint/array-type": ["error", "array-simple"],
+
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.test.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": 0
+      }
+    }
+  ]
+}

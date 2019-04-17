@@ -21,7 +21,7 @@ describe('filter', () => {
     expect(filtered).toEqual({ foo: 'bar' })
   })
 
-  const isString = (key: string, value: any) => typeof value === 'string'
+  const isString = (_key: string, value: unknown) => typeof value === 'string'
 
   it('should return items matching guard as type of guard', () => {
     const filtered: Dictionary<string | number> = filter(
@@ -49,10 +49,10 @@ describe('reduce', () => {
   })
 
   it('should add elements to array', () => {
-    const result: Array<[String, number]> = reduce(
+    const result: Array<[string, number]> = reduce(
       { foo: 2, bar: 4, baz: 6 },
-      [],
-      (r: Array<[String, number]>, n) => [...r, n],
+      [] as Array<[string, number]>,
+      (r, n) => [...r, n],
     )
     expect(result).toEqual([['foo', 2], ['bar', 4], ['baz', 6]])
   })

@@ -149,7 +149,7 @@ describe('reverse', () => {
 
   it('should not mutate the input array', () => {
     const items = [1, 2, 3, 4]
-    const result = reverse(items)
+    reverse(items)
     expect(items).toEqual([1, 2, 3, 4])
   })
 })
@@ -199,7 +199,7 @@ describe('take', () => {
 
   it('should not mutate the input array', () => {
     const input = [1, 2, 3]
-    const result = take(input, 2)
+    take(input, 2)
     expect(input).toEqual([1, 2, 3])
   })
 })
@@ -215,7 +215,7 @@ describe('drop', () => {
 
   it('should not mutate the input array', () => {
     const input = [1, 2, 3]
-    const result = drop(input, 1)
+    drop(input, 1)
     expect(input).toEqual([1, 2, 3])
   })
 
@@ -283,7 +283,7 @@ describe('dropWhile', () => {
 
   it('should provide the index for predicates', () => {
     const input = [3, 2, 1]
-    const result = dropWhile(input, (value, index) => index < 1)
+    const result = dropWhile(input, (_value, index) => index < 1)
     expect(result).toEqual([2, 1])
   })
 })

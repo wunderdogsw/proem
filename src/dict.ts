@@ -1,7 +1,15 @@
 import { Guard, Reducer, BinaryFn } from './function'
+import * as array from './array'
 
 export interface Dictionary<A> {
   [key: string]: A
+}
+
+export function forEach<A>(
+  dict: Dictionary<A>,
+  body: (value: A, key: string) => void,
+): void {
+  array.forEach(Object.keys(dict), key => body(dict[key], key))
 }
 
 export function map<A, B>(
@@ -9,11 +17,9 @@ export function map<A, B>(
   mapfn: BinaryFn<string, A, B>,
 ): Dictionary<B> {
   const result: Dictionary<B> = {}
-  for (const key in dict) {
-    if (dict.hasOwnProperty(key)) {
-      result[key] = mapfn(key, dict[key])
-    }
-  }
+  forEach(dict, (value, key) => {
+    result[key] = mapfn(key, value)
+  })
   return result
 }
 
@@ -26,17 +32,15 @@ export function filter<A>(
   predicate: (index: string, value: A) => boolean,
 ): Dictionary<A>
 export function filter(
-  dict: Dictionary<any>,
-  predicate: (index: string, value: any) => boolean,
-): Dictionary<any> {
-  const result: Dictionary<any> = {}
-  for (const key in dict) {
-    if (dict.hasOwnProperty(key)) {
-      if (predicate(key, dict[key])) {
-        result[key] = dict[key]
-      }
+  dict: Dictionary<unknown>,
+  predicate: (index: string, value: unknown) => boolean,
+): Dictionary<unknown> {
+  const result: Dictionary<unknown> = {}
+  forEach(dict, (value, key) => {
+    if (predicate(key, value)) {
+      result[key] = value
     }
-  }
+  })
   return result
 }
 
@@ -44,13 +48,11 @@ export const reduce = <A, R>(
   dict: Dictionary<A>,
   initial: R,
   reducer: Reducer<[string, A], R>,
-) => {
+): R => {
   let result = initial
-  for (const key in dict) {
-    if (dict.hasOwnProperty(key)) {
-      const entry: [string, A] = [key, dict[key]]
-      result = reducer(result, entry)
-    }
-  }
+  forEach(dict, (value, key) => {
+    const entry: [string, A] = [key, value]
+    result = reducer(result, entry)
+  })
   return result
 }

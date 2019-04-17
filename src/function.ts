@@ -13,7 +13,7 @@ export type Reducer<A, B> = (accumulator: B, value: A) => B
  * The transformed function takes the same arguments as the original function
  * except for the first one, and returns a function that only takes the originals first argument.
  */
-export function partial<A, B, Rest extends any[]>(
+export function partial<A, B, Rest extends unknown[]>(
   fun: (a: A, ...rest: Rest) => B,
 ): (...rest: Rest) => (a: A) => B {
   return (...rest: Rest) => (a: A): B => {

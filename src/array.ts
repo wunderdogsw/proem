@@ -56,10 +56,10 @@ export function filter<A>(
   predicate: IndexedPredicate<A>,
 ): A[]
 export function filter(
-  array: ArrayLike<any>,
-  predicate: IndexedPredicate<any>,
-) {
-  const result: any[] = []
+  array: ArrayLike<unknown>,
+  predicate: IndexedPredicate<unknown>,
+): unknown[] {
+  const result: unknown[] = []
   for (let i = 0; i < array.length; i++) {
     const value = array[i]
     if (predicate(value, i)) {
@@ -73,7 +73,7 @@ export function reduce<A, R>(
   array: ArrayLike<A>,
   initial: R,
   reducer: (accumulator: R, value: A, index: number) => R,
-) {
+): R {
   let result = initial
   for (let i = 0; i < array.length; i++) {
     result = reducer(result, array[i], i)
@@ -95,9 +95,10 @@ export function find<A>(
 }
 
 // Comparison used by newer ES6 operations like Array.include
-function sameValueZero(x: unknown, y: unknown) {
+function sameValueZero(x: unknown, y: unknown): boolean {
   return (
     x === y ||
+    // eslint-disable-next-line no-restricted-globals
     (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y))
   )
 }
@@ -121,7 +122,7 @@ export function includes<A>(array: ArrayLike<A>, item: A): boolean {
   return findIndex(array, value => sameValueZero(value, item)) > -1
 }
 
-export function reverse<A>(array: ArrayLike<A>) {
+export function reverse<A>(array: ArrayLike<A>): A[] {
   const result = new Array<A>(array.length)
   for (let i = 0; i < array.length; i++) {
     const target = array.length - i - 1
@@ -185,4 +186,13 @@ export function dropWhile<A>(
     return []
   }
   return drop(array, lastIndex)
+}
+
+export function forEach<A>(
+  array: ArrayLike<A>,
+  body: (item: A, index: number) => void,
+): void {
+  for (let i = 0; i < array.length; i++) {
+    body(array[i], i)
+  }
 }
