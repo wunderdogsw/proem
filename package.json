@@ -10,8 +10,10 @@
     "lint": "eslint **/*.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "tsc -p tsconfig.build.json",
-    "clean:package": "node scripts/clean.js"
+    "build": "yarn build:compile && yarn build:append-references",
+    "build:compile": "tsc -p tsconfig.build.json",
+    "build:append-references": "node scripts/append-references.js",
+    "clean": "node scripts/clean.js"
   },
   "devDependencies": {
     "@types/benchmark": "^1.0.31",

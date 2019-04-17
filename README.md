@@ -39,5 +39,5 @@ The whole point of `proem` is to provide useful utilities while avoiding a ton o
 You can clean the `package/` folder with the command
 
 ```
-yarn clean:package
+yarn clean
 ```
