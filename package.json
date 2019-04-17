@@ -1,9 +1,6 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged --pattern \"./src/**/*.ts\" --pattern \"./test/**/*.ts\""
