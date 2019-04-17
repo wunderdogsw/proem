@@ -13,7 +13,35 @@ import {
   fill,
   generate,
   flatMap,
+  forEach,
 } from '~/array'
+
+describe('forEach', () => {
+  it('should iterate all items in an array', () => {
+    const values = ['a', 'b', 'c']
+
+    const result: Array<[number, string]> = []
+    forEach(values, (item, index) => {
+      result.push([index, item])
+    })
+    expect(result).toEqual([[0, 'a'], [1, 'b'], [2, 'c']])
+  })
+
+  it('should iterate an ArrayLike object', () => {
+    const values = {
+      length: 3,
+      0: 'a',
+      1: 'b',
+      2: 'c',
+    }
+
+    const result: Array<[number, string]> = []
+    forEach(values, (item, index) => {
+      result.push([index, item])
+    })
+    expect(result).toEqual([[0, 'a'], [1, 'b'], [2, 'c']])
+  })
+})
 
 describe('fill', () => {
   it('should create an array filled with single item', () => {

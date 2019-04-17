@@ -1,4 +1,32 @@
-import { map, filter, reduce, Dictionary } from '~/dict'
+import { map, filter, reduce, forEach, Dictionary } from '~/dict'
+
+describe('forEach', () => {
+  it('should iterate through all the items and keys in a Dictionary', () => {
+    const values = {
+      a: 1,
+      b: 2,
+      c: 3,
+    }
+
+    const result: Array<[number, string]> = []
+    forEach(values, (value, key) => {
+      result.push([value, key])
+    })
+    expect(values).toEqual({ a: 1, b: 2, c: 3 })
+    expect(result).toEqual([[1, 'a'], [2, 'b'], [3, 'c']])
+  })
+
+  it('should not iterate on an empty array', () => {
+    const values = {}
+
+    let called = 0
+    forEach(values, () => {
+      called += 1
+    })
+    expect(values).toEqual({})
+    expect(called).toBe(0)
+  })
+})
 
 describe('map', () => {
   it('should transform items', () => {
