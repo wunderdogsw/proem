@@ -1,12 +1,7 @@
 /node_modules/
-packages/*/node_modules
 
-# Type definitions are committed, required by TS project references
-packages/*/lib/**/*.test.*
-packages/*/lib/**/*.bench.*
-packages/*/lib/**/*.js
-packages/*/lib/**/*.js.map
-packages/*/src/**/*.js
+package/*
+!package/package.json
 
 *.log
 .idea
