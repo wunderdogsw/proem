@@ -6,30 +6,31 @@ executors:
       - image: circleci/node:10.13
     working_directory: /tmp/repo
 
+commands:
+  restore_yarn:
+    description: 'Restores yarn cache'
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run: yarn install --frozen-lockfile
+
 jobs:
   install:
     executor: node-executor
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: yarn install --frozen-lockfile
+      - restore_yarn
       - save_cache:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
-      - persist_to_workspace:
-          root: .
-          paths: node_modules
+            - ~/.cache/yarn
   build:
     executor: node-executor
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/tmp/repo
+      - restore_yarn
       - run: yarn build
       - persist_to_workspace:
           root: .
@@ -39,13 +40,14 @@ jobs:
     executor: node-executor
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/tmp/repo
-      - run: yarn lint && yarn test
+      - restore_yarn
+      - run: yarn lint
+      - run: yarn test
   release:
     executor: node-executor
     steps:
       - checkout
+      - restore_yarn
       - attach_workspace:
           at: ~/tmp/repo
       - run: yarn release
