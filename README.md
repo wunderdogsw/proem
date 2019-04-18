@@ -1,3 +1,5 @@
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 # Proem
 
 TypeScript standard library.
@@ -6,7 +8,16 @@ TypeScript standard library.
 
 You need [`yarn`](https://yarnpkg.com/en/docs/install)
 
-Test with
+Commits must be made with [`commitizen`](https://www.npmjs.com/package/commitizen).
+There is a node script for it in `package.json`, so just write
+
+```
+yarn commit
+```
+
+instead of `git commit`.
+
+#### Test with
 
 ```
 yarn test
@@ -18,7 +29,7 @@ Run tests in watch mode
 yarn test:watch
 ```
 
-Build with
+#### Build with
 
 ```
 yarn build
