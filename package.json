@@ -29,7 +29,7 @@
     "build:compile": "tsc -p tsconfig.build.json",
     "build:append-references": "node scripts/append-references.js",
     "clean": "node scripts/clean.js",
-    "release": "echo \"INSERT RELEASE HERE\""
+    "release": "echo \"INSERT RELEASE HERE\" && ls -la ./package"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^7.5.0",
