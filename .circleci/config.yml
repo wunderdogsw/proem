@@ -4,7 +4,7 @@ executors:
   node-executor:
     docker:
       - image: circleci/node:10.13
-    working_directory: /repo
+    working_directory: /tmp/repo
 
 jobs:
   install:
@@ -29,7 +29,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-        at: ~/repo
+        at: ~/tmp/repo
       - run: yarn build
       - persist_to_workspace:
           root: .
@@ -40,14 +40,14 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/repo
+          at: ~/tmp/repo
       - run: yarn lint && yarn test
   release:
     executor: node-executor
     steps:
       - checkout
       - attach_workspace:
-          at: ~/repo
+          at: ~/tmp/repo
       - run: yarn release
 
 workflows:
