@@ -1,0 +1,11 @@
+{
+  "name": "proem",
+  "version": "0.2.0",
+  "description": "Alternative standard library for TypeScript",
+  "main": "index.js",
+  "sideEffects": false,
+  "repository": "https://github.com/wunderdogsw/proem",
+  "author": "Joni Katajamäki <joni.katajamaki@wunderdog.fi>",
+  "license": "MIT",
+  "private": false
+}

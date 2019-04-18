@@ -1,13 +1,18 @@
 {
-  "references": [
-    { "path": "packages/function" },
-    { "path": "packages/array" },
-    { "path": "packages/dict" },
-    { "path": "packages/pipe" },
-    { "path": "packages/some" },
-    { "path": "packages/variant" },
-    { "path": "packages/union" },
-    { "path": "packages/all" }
-  ],
-  "exclude": ["**/*"]
+  "compilerOptions": {
+    "strict": true,
+    "target": "es5",
+    "newLine": "LF",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "lib": ["es5"],
+    "outDir": "package",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*", "test/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["package", "node_modules"]
 }
