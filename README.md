@@ -8,14 +8,15 @@ TypeScript standard library.
 
 You need [`yarn`](https://yarnpkg.com/en/docs/install)
 
-Commits must be made with [`commitizen`](https://www.npmjs.com/package/commitizen).
-There is a node script for it in `package.json`, so just write
+Commits should be made with [`commitizen`](https://www.npmjs.com/package/commitizen).
+There is a node script for it in `package.json`, so instead of `git commit` just write:
 
 ```
 yarn commit
 ```
 
-instead of `git commit`.
+You can write the commit message yourself, but it has to comply with the "conventional" commit structure.
+See https://github.com/conventional-changelog/commitlint#what-is-commitlint
 
 #### Test with
 
