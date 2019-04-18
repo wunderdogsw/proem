@@ -1,5 +1,5 @@
 {
-  "recommendations": ["esbenp.prettier-vscode"],
+  "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []
 }
