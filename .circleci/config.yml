@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@1.0.4
+
 executors:
   node-executor:
     docker:
@@ -43,6 +46,8 @@ jobs:
       - restore_yarn
       - run: yarn lint
       - run: yarn test
+      - codecov/upload:
+          file: coverage/lcov.info
   release:
     executor: node-executor
     steps:
