@@ -15,11 +15,6 @@
   "scripts": {
     "release": "semantic-release"
   },
-  "release": {
-    "branch": "continuous-deployment",
-    "dryRun": true,
-    "debug": true
-  },
   "devDependencies": {
     "semantic-release": "^15.13.3"
   }

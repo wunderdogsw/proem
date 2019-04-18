@@ -72,7 +72,6 @@ workflows:
             branches:
               only:
                 - master
-                - continuous-deployment # TODO: remove
           requires:
             - test
             - build
