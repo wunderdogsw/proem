@@ -2,6 +2,7 @@
 
 package/*
 !package/package.json
+!package/README.md
 
 *.log
 .idea
