@@ -32,7 +32,6 @@ jobs:
       - checkout
       - restore_yarn
       - run: yarn build
-      - run: ls -la package
       - persist_to_workspace:
           root: .
           paths:
