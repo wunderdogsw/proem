@@ -29,7 +29,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-        at: ~/tmp/repo
+          at: ~/tmp/repo
       - run: yarn build
       - persist_to_workspace:
           root: .
