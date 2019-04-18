@@ -1,10 +1,11 @@
+version: 2.1
+
 executors:
   node-executor:
     docker:
       - image: circleci/node:10.13
     working_directory: /repo
 
-version: 2
 jobs:
   install:
     executor: node-executor
@@ -55,11 +56,11 @@ workflows:
     jobs:
       - install
       - build:
-        requires:
-          - install
+          requires:
+            - install
       - test:
-        requires:
-          - install
+          requires:
+            - install
       - deploy:
           filters:
             branches:
