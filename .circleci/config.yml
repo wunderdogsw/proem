@@ -34,7 +34,7 @@ jobs:
       - run: yarn build
       - run: ls -la package
       - persist_to_workspace:
-          root: /tmp/repo
+          root: .
           paths:
             - package
   test:
@@ -50,7 +50,7 @@ jobs:
       - checkout
       - restore_yarn
       - attach_workspace:
-          at: ~/tmp/repo
+          at: .
       - run: yarn release
 
 workflows:
