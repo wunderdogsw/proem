@@ -16,15 +16,13 @@ describe('forEach', () => {
     expect(result).toEqual([[1, 'a'], [2, 'b'], [3, 'c']])
   })
 
-  it('should not iterate on an empty array', () => {
+  it('should not call body when iterating empty object', () => {
     const values = {}
 
-    let called = 0
-    forEach(values, () => {
-      called += 1
-    })
+    const body = jest.fn()
+    forEach(values, body)
     expect(values).toEqual({})
-    expect(called).toBe(0)
+    expect(body).toHaveBeenCalledTimes(0)
   })
 })
 
