@@ -18,6 +18,8 @@ yarn commit
 You can write the commit message yourself, but it has to comply with the "conventional" commit structure.
 See https://github.com/conventional-changelog/commitlint#what-is-commitlint
 
+Don't forget to add your name into `package/package.json` contributors!
+
 #### Test with
 
 ```
@@ -28,6 +30,24 @@ Run tests in watch mode
 
 ```
 yarn test:watch
+```
+
+#### Add dependencies
+
+The project uses [yarn workspaces](https://yarnpkg.com/lang/en/docs/cli/workspace/).
+
+The root `package.json` is the workspace root, and `package/package.json` is the actual npm package.
+
+You can add a dependency for the root project with
+
+```
+yarn add -W dep1
+```
+
+and adding deps to the `proem` library works with
+
+```
+yarn workspace proem add dep1 dep2
 ```
 
 #### Build with

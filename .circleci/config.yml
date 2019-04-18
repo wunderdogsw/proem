@@ -51,7 +51,10 @@ jobs:
       - restore_yarn
       - attach_workspace:
           at: .
-      - run: yarn release
+      - run:
+          command: |
+            cd package
+            yarn release
 
 workflows:
   version: 2

@@ -4,6 +4,9 @@
   "repository": "git@github.com:wunderdogsw/proem.git",
   "license": "MIT",
   "private": true,
+  "workspaces": [
+    "package"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -29,7 +32,7 @@
     "build:compile": "tsc -p tsconfig.build.json",
     "build:append-references": "node scripts/append-references.js",
     "clean": "node scripts/clean.js",
-    "release": "echo \"INSERT RELEASE HERE\" && ls -la ./package"
+    "release": "cd package && npx semantic-release"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^7.5.0",

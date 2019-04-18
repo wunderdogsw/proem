@@ -5,7 +5,22 @@
   "main": "index.js",
   "sideEffects": false,
   "repository": "https://github.com/wunderdogsw/proem",
-  "author": "Joni Katajamäki <joni.katajamaki@wunderdog.fi>",
+  "contributors": [
+    "Joni Katajamäki <joni.katajamaki@wunderdog.fi>",
+    "deiga",
+    "villhei"
+  ],
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "release": "semantic-release"
+  },
+  "release": {
+    "branch": "continuous-deployment",
+    "dryRun": true,
+    "debug": true
+  },
+  "devDependencies": {
+    "semantic-release": "^15.13.3"
+  }
 }
