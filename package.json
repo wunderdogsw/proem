@@ -28,7 +28,8 @@
     "build": "yarn build:compile && yarn build:append-references",
     "build:compile": "tsc -p tsconfig.build.json",
     "build:append-references": "node scripts/append-references.js",
-    "clean": "node scripts/clean.js"
+    "clean": "node scripts/clean.js",
+    "release": "echo \"INSERT RELEASE HERE\""
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^7.5.0",
