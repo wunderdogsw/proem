@@ -1,32 +1,77 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  node-executor:
     docker:
-      # specify the version you desire here
       - image: circleci/node:10.13
+    working_directory: /tmp/repo
 
-    working_directory: ~/repo
-
+commands:
+  restore_yarn:
+    description: 'Restores yarn cache'
     steps:
-      - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
+      - run: yarn install --frozen-lockfile
 
-      - run: yarn install
-
+jobs:
+  install:
+    executor: node-executor
+    steps:
+      - checkout
+      - restore_yarn
       - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.cache/yarn
+  build:
+    executor: node-executor
+    steps:
+      - checkout
+      - restore_yarn
+      - run: yarn build
+      - run: ls -la package
+      - persist_to_workspace:
+          root: .
+          paths:
+            - package
+  test:
+    executor: node-executor
+    steps:
+      - checkout
+      - restore_yarn
+      - run: yarn lint
+      - run: yarn test
+  release:
+    executor: node-executor
+    steps:
+      - checkout
+      - restore_yarn
+      - attach_workspace:
+          at: .
+      - run:
+          command: |
+            cd package
+            yarn release
 
-      # run tests!
-      - run: yarn build && yarn test
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
+      - test:
+          requires:
+            - install
+      - release:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
+            - build
