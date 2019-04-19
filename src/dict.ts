@@ -1,17 +1,23 @@
 import { Guard, Reducer, BinaryFn } from './function'
-import * as array from './array'
 
+/** `Dictionary` is a JavaScript object used as a key-value map. */
 export interface Dictionary<A> {
   [key: string]: A
 }
 
+/** `forEach` calls a function for each key and value the Dictionary has. */
 export function forEach<A>(
   dict: Dictionary<A>,
   body: (value: A, key: string) => void,
 ): void {
-  array.forEach(Object.keys(dict), key => body(dict[key], key))
+  const keys = Object.keys(dict)
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    body(dict[key], key)
+  }
 }
 
+/** `map` transforms a Dictionary into another with the same keys and values transformed by the function. */
 export function map<A, B>(
   dict: Dictionary<A>,
   mapfn: BinaryFn<string, A, B>,
@@ -23,6 +29,11 @@ export function map<A, B>(
   return result
 }
 
+/**
+ * `filter` transforms the Dictionary by removing keys that don't match the condition.
+ *
+ * If the condition is a type guard, the values are also cast into the guarded type.
+ */
 export function filter<A, B extends A>(
   dict: Dictionary<A>,
   guard: Guard<A, B>,
@@ -44,6 +55,7 @@ export function filter(
   return result
 }
 
+/** `reduce` returns the result of the reducer function after it has been applied to all Dictionary keys and values. */
 export const reduce = <A, R>(
   dict: Dictionary<A>,
   initial: R,
