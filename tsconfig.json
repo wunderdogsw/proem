@@ -10,7 +10,7 @@
     "outDir": "package",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*", "test/*"]
+      "~/*": ["src/*"]
     }
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],
