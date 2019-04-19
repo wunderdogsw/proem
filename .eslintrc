@@ -26,7 +26,8 @@
           "completed-docs": [
             true,
             {
-              "functions": { "visibilities": ["exported"] }
+              "functions": { "visibilities": ["exported"] },
+              "types": { "visibilities": ["exported"] }
             }
           ]
         }
