@@ -27,7 +27,8 @@
             true,
             {
               "functions": { "visibilities": ["exported"] },
-              "types": { "visibilities": ["exported"] }
+              "types": { "visibilities": ["exported"] },
+              "interfaces": { "visibilities": ["exported"] }
             }
           ]
         }
