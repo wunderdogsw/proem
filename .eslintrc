@@ -1,6 +1,11 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "jest"],
+  "plugins": [
+    "@typescript-eslint",
+    "@typescript-eslint/tslint",
+    "jest",
+    "jsdoc"
+  ],
   "env": {
     "jest": true
   },
@@ -10,7 +15,23 @@
     "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended"
   ],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
   "rules": {
+    "@typescript-eslint/tslint/config": [
+      "warn",
+      {
+        "rules": {
+          "completed-docs": [
+            true,
+            {
+              "functions": { "visibilities": ["exported"] }
+            }
+          ]
+        }
+      }
+    ],
     "import/prefer-default-export": 0,
     "@typescript-eslint/indent": ["error", 2],
     "import/no-unresolved": 0,
