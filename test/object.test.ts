@@ -1,4 +1,4 @@
-import { keys, map } from '~/object'
+import { keys, map, filter } from '~/object'
 import { typeAssert } from './test-util'
 
 describe('keys', () => {
@@ -12,6 +12,12 @@ describe('keys', () => {
     const objKeys = keys(obj)
     typeAssert<Array<1 | 'a' | 'b' | 'c'>>(objKeys)
     expect(objKeys.sort()).toEqual(['1', 'a', 'b', 'c'])
+  })
+
+  it('should throw error on non plain objects', () => {
+    expect(() => keys([1, 2])).toThrowError(
+      'object.keys argument must be a plain object',
+    )
   })
 })
 
@@ -37,5 +43,39 @@ describe('map', () => {
 
     expect(mapfn).toHaveBeenCalledTimes(0)
     expect(mapped).toEqual({})
+  })
+})
+
+describe('filter', () => {
+  it('should remove fields not matching predicate', () => {
+    const obj = {
+      a: 'first',
+      b: 2,
+      c: 'third',
+    } as const
+    const result = filter(obj, (field, key) => `${key}-${field}` !== 'b-2')
+    expect(result).toEqual({
+      a: 'first',
+      c: 'third',
+    })
+  })
+
+  it('should remove fields not matching guard and cast values that match using the guard', () => {
+    const obj = {
+      a: 'first',
+      b: 2,
+      c: 'third',
+    } as const
+    const isString = (value: string | unknown): value is string =>
+      typeof value === 'string'
+    const result = filter(obj, isString)
+    typeAssert<{
+      readonly a: string
+      readonly c: string
+    }>(result)
+    expect(result).toEqual({
+      a: 'first',
+      c: 'third',
+    })
   })
 })
