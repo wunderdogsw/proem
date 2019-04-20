@@ -2,9 +2,15 @@
  * `keys` returns an array with the enumerable property names of the object.
  *
  * Numeric keys are actually strings, even though the type is a literal number.
+ *
+ * @throws {Error} if value is not a plain object
  */
-export function keys<A extends object>(value: A): Array<keyof A> {
-  return Object.keys(value) as Array<keyof A>
+export function keys<A extends object>(value: A): Array<keyof A>
+export function keys<A extends object>(value: A): string[] {
+  if (value.constructor !== Object) {
+    throw Error('object.keys argument must be a plain object')
+}
+  return Object.keys(value)
 }
 
 /** `map` transforms the values of an object using the function. */
