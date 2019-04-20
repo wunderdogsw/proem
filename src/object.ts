@@ -25,12 +25,11 @@ export type KeyGuard<A extends ReadonlyObject, B extends A[keyof A]> = (
  *
  * @throws {Error} if value is not a plain object
  */
-export function keys<A extends object>(value: A): Array<keyof A>
-export function keys<A extends object>(value: A): string[] {
+export function keys<A extends object>(value: A): Array<keyof A> {
   if (value.constructor !== Object) {
     throw Error('object.keys argument must be a plain object')
   }
-  return Object.keys(value)
+  return Object.keys(value) as Array<keyof A>
 }
 
 /** `map` transforms the values of an object using the function. */
