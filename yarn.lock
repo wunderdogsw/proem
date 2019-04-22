@@ -643,9 +643,9 @@
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
 "@typescript-eslint/eslint-plugin-tslint@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin-tslint/-/eslint-plugin-tslint-1.6.0.tgz#8e22af21a2fd9f84debb8a69ef56bc5dab9157ed"
-  integrity sha512-euDCThQ26LmBeSWCGOUT+CyFhk0S86Yq5sZnnwyr+q9eeekySBW1g2AYLc8Hmuq1edXjLjM6d5RB5Yl3ZesQKA==
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin-tslint/-/eslint-plugin-tslint-1.7.0.tgz#6787d32c80bcc539af4b446620ee90b461864438"
+  integrity sha512-lvz7hKqdQXE1cV+w00gWYrM3ChP2S01KrRKogsy6l+nDV2Bv7qAnRGAh+j8qxNQCEskJMf2litXR3g/e+yeCdA==
   dependencies:
     lodash.memoize "^4.1.2"
 
