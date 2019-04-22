@@ -78,6 +78,7 @@ describe('map', () => {
   })
 
   test('should throw error if variants type is not one of the cases', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(() => calc({ type: 'foo' } as any)).toThrowError(
       'No match case found',
     )
@@ -129,8 +130,10 @@ describe('reducer', () => {
   })
 
   it('should return state unchanged if no matching case is found', () => {
-    const op = { type: 'foo' } as any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const unknownOp = { type: 'foo' } as any
+    // eslint-disable-next-line no-new-wrappers
     const state = new Number(2)
-    expect(calcReducer(state as number, op)).toBe(state)
+    expect(calcReducer(state as number, unknownOp)).toBe(state)
   })
 })
