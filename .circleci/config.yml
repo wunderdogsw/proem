@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  codecov: codecov/codecov@1.0.4
-
 executors:
   node-executor:
     docker:
@@ -46,8 +43,12 @@ jobs:
       - restore_yarn
       - run: yarn lint
       - run: yarn test
-      - codecov/upload:
-          file: coverage/lcov.info
+      - run:
+          name: Upload Coverage Results
+          command: |
+            bash <(curl -s https://codecov.io/bash) \
+            -f ./coverage/lcov.info \
+            -n "$CIRCLE_BUILD_NUM-$CIRCLE_BRANCH"
   release:
     executor: node-executor
     steps:
