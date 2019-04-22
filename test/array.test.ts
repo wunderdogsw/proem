@@ -317,6 +317,10 @@ describe('dropWhile', () => {
 })
 
 describe('includes', () => {
+  it('should return false if array is empty', () => {
+    expect(includes([], 1)).toBe(false)
+  })
+
   it('should return true for an item that exists', () => {
     expect(includes([1, 2, 3], 2)).toBe(true)
   })

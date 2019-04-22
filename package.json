@@ -25,7 +25,7 @@
   },
   "scripts": {
     "lint": "eslint **/*.ts",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch",
     "commit": "git-cz",
     "build": "yarn build:compile && yarn build:append-references",

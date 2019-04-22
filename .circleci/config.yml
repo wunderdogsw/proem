@@ -43,6 +43,12 @@ jobs:
       - restore_yarn
       - run: yarn lint
       - run: yarn test
+      - run:
+          name: Upload Coverage Results
+          command: |
+            bash <(curl -s https://codecov.io/bash) \
+            -f ./coverage/lcov.info \
+            -n "$CIRCLE_BUILD_NUM-$CIRCLE_BRANCH"
   release:
     executor: node-executor
     steps:

@@ -76,6 +76,13 @@ describe('map', () => {
   test('should return result when there is a match and a default case is provided', () => {
     expect(partialCalc(op({ type: 'add', left: 1, right: 2 }))).toBe(3)
   })
+
+  test('should throw error if variants type is not one of the cases', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => calc({ type: 'foo' } as any)).toThrowError(
+      'No match case found',
+    )
+  })
 })
 
 describe('oneOf', () => {
@@ -120,5 +127,13 @@ describe('reducer', () => {
       { type: 'increment' },
     ]
     expect(array.reduce(ops, 0, calcReducer)).toBe(3)
+  })
+
+  it('should return state unchanged if no matching case is found', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const unknownOp = { type: 'foo' } as any
+    // eslint-disable-next-line no-new-wrappers
+    const state = new Number(2)
+    expect(calcReducer(state as number, unknownOp)).toBe(state)
   })
 })
