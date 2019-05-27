@@ -1,8 +1,6 @@
 {
   "extends": [
     "config:js-lib",
-    "schedule:weekly",
-    ":rebaseStalePrs",
-    ":maintainLockFilesWeekly"
+    ":rebaseStalePrs"
   ]
 }
