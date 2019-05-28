@@ -2,6 +2,7 @@
   "extends": [
     "config:js-lib",
     ":rebaseStalePrs",
-    "schedule:weekly"
+    "schedule:weekly",
+    "group:allNonMajor"
   ]
 }
