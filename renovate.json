@@ -4,5 +4,6 @@
     ":rebaseStalePrs",
     "schedule:weekly",
     "group:allNonMajor"
-  ]
+  ],
+  "lockFileMaintenance": { "enabled": false }
 }
