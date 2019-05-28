@@ -1,6 +1,7 @@
 {
   "extends": [
     "config:js-lib",
-    ":rebaseStalePrs"
+    ":rebaseStalePrs",
+    "schedule:weekly"
   ]
 }
