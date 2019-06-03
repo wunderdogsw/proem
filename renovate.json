@@ -3,6 +3,8 @@
     "config:js-lib",
     ":rebaseStalePrs",
     "schedule:weekly",
+    ":masterIssue",
+    "group:linters",
     "group:allNonMajor"
   ],
   "lockFileMaintenance": { "enabled": false },
