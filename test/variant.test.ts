@@ -1,5 +1,6 @@
 import * as variant from '~/variant'
 import * as array from '~/array'
+import { typeAssert } from './test-util'
 
 interface Add {
   type: 'add'
@@ -33,13 +34,10 @@ type Op = Add | Sub | Increment | Decrement | Div
 
 const op = (v: Op): Op => v
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function ignore<T>(_value: T): void {}
-
 describe('tags', () => {
   it('should infer tag types', () => {
     const tagsInferred = variant.tags('a', 'b', 'c')
-    ignore<['a', 'b', 'c']>(tagsInferred)
+    typeAssert<['a', 'b', 'c']>(tagsInferred)
   })
 })
 
@@ -101,9 +99,9 @@ describe('oneOf', () => {
   it('should refine the type in an if statement', () => {
     const inc = op({ type: 'increment', value: 1 })
     if (variant.oneOf(inc, ['div', 'sub'])) {
-      ignore<Div | Sub>(inc)
+      typeAssert<Div | Sub>(inc)
     } else {
-      ignore<Add | Sub | Increment | Decrement>(inc)
+      typeAssert<Add | Sub | Increment | Decrement>(inc)
     }
   })
 })

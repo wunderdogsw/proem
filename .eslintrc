@@ -34,6 +34,7 @@
         }
       }
     ],
+    "@typescript-eslint/no-object-literal-type-assertion": 0,
     "import/prefer-default-export": 0,
     "@typescript-eslint/indent": ["error", 2],
     "import/no-unresolved": 0,
@@ -68,14 +69,14 @@
   },
   "overrides": [
     {
-      "files": ["*.test.ts"],
+      "files": ["test/**.ts"],
       "rules": {
-        "@typescript-eslint/explicit-function-return-type": 0
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "@typescript-eslint/tslint/config": 0
       }
     },
-
     {
-      "files": ["scripts/**.js"],
+      "files": ["**.js"],
       "rules": {
         "@typescript-eslint/no-var-requires": 0
       }
