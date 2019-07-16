@@ -55,7 +55,7 @@
     "eslint-plugin-import": "2.18.0",
     "eslint-plugin-jest": "22.7.1",
     "eslint-plugin-jsdoc": "10.0.3",
-    "husky": "2.7.0",
+    "husky": "3.0.0",
     "jest": "24.8.0",
     "microtime": "3.0.0",
     "prettier": "1.18.2",
