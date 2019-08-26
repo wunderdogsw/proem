@@ -49,11 +49,11 @@
     "commitizen": "4.0.3",
     "commitlint": "8.1.0",
     "cz-conventional-changelog": "3.0.2",
-    "eslint": "6.2.1",
+    "eslint": "6.2.2",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-prettier": "6.1.0",
     "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-jest": "22.15.1",
+    "eslint-plugin-jest": "22.15.2",
     "eslint-plugin-jsdoc": "15.8.3",
     "husky": "3.0.4",
     "jest": "24.9.0",
@@ -63,7 +63,7 @@
     "rimraf": "3.0.0",
     "ts-jest": "24.0.2",
     "ts-node": "8.3.0",
-    "tslint": "5.18.0",
+    "tslint": "5.19.0",
     "typescript": "3.5.3"
   }
 }
