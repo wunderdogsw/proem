@@ -16,6 +16,6 @@
     "release": "semantic-release"
   },
   "devDependencies": {
-    "semantic-release": "15.13.24"
+    "semantic-release": "15.13.31"
   }
 }
