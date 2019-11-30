@@ -57,7 +57,7 @@
       "error",
       { "allowExpressions": true }
     ],
-    "@typescript-eslint/array-type": ["error", "array-simple"],
+    "@typescript-eslint/array-type": ["error", { "default": "array-simple" }],
 
     "@typescript-eslint/no-unused-vars": [
       "error",
