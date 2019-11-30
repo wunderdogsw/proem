@@ -1,2 +1,4 @@
 /** Checks a type without changing type inference. */
-export function typeAssert<T>(_value: T): void {}
+export function typeAssert<T>(_value: T): void {
+  // no-op
+}
