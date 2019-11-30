@@ -3,19 +3,22 @@ import { typeAssert } from './test-util'
 
 describe('keys', () => {
   it('should return a typed array of objects keys', () => {
+    const symbol = Symbol('key')
     const obj = {
       a: 'first',
       b: 2,
       c: new Date(),
       1: 2,
+      [symbol]: 'adsf'
     } as const
     const objKeys = keys(obj)
-    typeAssert<Array<1 | 'a' | 'b' | 'c'>>(objKeys)
+    typeAssert<Array<'1' | 'a' | 'b' | 'c'>>(objKeys)
     expect(objKeys.sort()).toEqual(['1', 'a', 'b', 'c'])
   })
 
   it('should throw error on non plain objects', () => {
-    expect(() => keys([1, 2])).toThrowError(
+    const value = [1, 2] as {}
+    expect(() => keys(value)).toThrowError(
       'object.keys argument must be a plain object',
     )
   })

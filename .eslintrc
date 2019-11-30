@@ -36,7 +36,7 @@
     ],
     "@typescript-eslint/no-object-literal-type-assertion": 0,
     "import/prefer-default-export": 0,
-    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": 0,
     "import/no-unresolved": 0,
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "import/export": 0,
