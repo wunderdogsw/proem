@@ -121,3 +121,16 @@ export function filter<A extends ReadonlyObject>(
   }
   return obj as ObjectType.Optional<A, keyof A, 'flat'>
 }
+
+/** Returns a new object with the provided fields from the value. */
+export function pick<A extends object, Keys extends ReadonlyArray<keyof A>>(
+  value: A,
+  valueKeys: Keys,
+): ObjectType.Pick<A, Keys[number]> {
+  const result = {} as ObjectType.Pick<A, Keys[number]>
+  for (let i = 0; i < valueKeys.length; i++) {
+    const key = valueKeys[i]
+    result[key] = value[key]
+  }
+  return result
+}

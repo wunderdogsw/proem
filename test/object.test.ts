@@ -1,4 +1,4 @@
-import { keys, map, filter } from '~/object'
+import { keys, map, filter, pick } from '~/object'
 import { typeAssert } from './test-util'
 
 describe('keys', () => {
@@ -80,5 +80,23 @@ describe('filter', () => {
       a: 'first',
       c: 'third',
     })
+  })
+})
+
+describe('pick', () => {
+  const obj = { a: 'first', b: 2, c: 'third' } as const
+
+  it('returns an object with picked fields', () => {
+    const result = pick(obj, ['a', 'b'])
+
+    typeAssert<{ a: 'first'; b: 2 }>(result)
+    expect(result).toEqual({ a: 'first', b: 2})
+  })
+
+  it('returns an empty object if keys are empty', () => {
+    const result = pick(obj, [])
+
+    typeAssert<{ }>(result)
+    expect(result).toEqual({ })
   })
 })
