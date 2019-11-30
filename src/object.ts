@@ -106,12 +106,12 @@ export function filter<A extends ReadonlyObject, B>(
 export function filter<A extends ReadonlyObject>(
   value: PlainObject<A>,
   predicate: KeyPredicate<A>,
-): Partial<A>
+): ObjectType.Optional<A, keyof A, 'flat'>
 export function filter<A extends ReadonlyObject>(
   value: PlainObject<A>,
   predicate: KeyPredicate<A>,
-): Partial<A> {
-  const obj: { [P in keyof A]?: A[P] } = {}
+): ObjectType.Optional<A, keyof A, 'flat'> {
+  const obj: Partial<A> = {}
   const objKeys = keys(value)
   for (let i = 0; i < objKeys.length; i++) {
     const key = objKeys[i]
@@ -119,5 +119,5 @@ export function filter<A extends ReadonlyObject>(
       obj[key] = value[key]
     }
   }
-  return obj
+  return obj as ObjectType.Optional<A, keyof A, 'flat'>
 }
