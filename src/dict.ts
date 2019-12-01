@@ -1,4 +1,4 @@
-import { Guard, Reducer, BinaryFn } from './function'
+import { Guard, Reducer, BinaryFn } from './fn'
 
 /** `Dictionary` is a JavaScript object used as a key-value map. */
 export interface Dictionary<A> {
