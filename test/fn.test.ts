@@ -1,4 +1,4 @@
-import { partial } from '~/function'
+import { partial } from '~/fn'
 
 describe('partial', () => {
   function sub(a: number, b: number): number {
