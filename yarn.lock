@@ -2572,10 +2572,10 @@ eslint-config-airbnb-base@14.1.0:
     object.assign "^4.1.0"
     object.entries "^1.1.1"
 
-eslint-config-prettier@6.10.0:
-  version "6.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.10.0.tgz#7b15e303bf9c956875c948f6b21500e48ded6a7f"
-  integrity sha512-AtndijGte1rPILInUdHjvKEGbIV06NuvPrqlIEaEaWtbtvJh464mDeyGMdZEQMsGvC0ZVkiex1fSNcC4HAbRGg==
+eslint-config-prettier@6.10.1:
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.10.1.tgz#129ef9ec575d5ddc0e269667bf09defcd898642a"
+  integrity sha512-svTy6zh1ecQojvpbJSgH3aei/Rt7C6i090l5f2WQ4aB05lYHeZIR1qL4wZyyILTbtmnbHP5Yn8MrsOJMGa8RkQ==
   dependencies:
     get-stdin "^6.0.0"
 
@@ -2620,10 +2620,10 @@ eslint-plugin-jest@23.8.2:
   dependencies:
     "@typescript-eslint/experimental-utils" "^2.5.0"
 
-eslint-plugin-jsdoc@22.0.1:
-  version "22.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-22.0.1.tgz#1f36c41a8818c968e46def7423e0b627841d72b9"
-  integrity sha512-lqQgGtd+roOhd5lSdIK4P3mlDmTVmVdcehj/r8nY25CGB2yi4Tk6JVwETCPBGnRKd40JkllkchyZmt0tFN+5pw==
+eslint-plugin-jsdoc@22.1.0:
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-22.1.0.tgz#dadfa62653fc0d87f900d810307f5ed07ef6ecd5"
+  integrity sha512-54NdbICM7KrxsGUqQsev9aIMqPXyvyBx2218Qcm0TQ16P9CtBI+YY4hayJR6adrxlq4Ej0JLpgfUXWaQVFqmQg==
   dependencies:
     comment-parser "^0.7.2"
     debug "^4.1.1"
@@ -7651,10 +7651,10 @@ ts-jest@25.2.1:
     semver "^5.5"
     yargs-parser "^16.1.0"
 
-ts-node@8.6.2:
-  version "8.6.2"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.6.2.tgz#7419a01391a818fbafa6f826a33c1a13e9464e35"
-  integrity sha512-4mZEbofxGqLL2RImpe3zMJukvEvcO1XP8bj8ozBPySdCUXEcU5cIRwR0aM3R+VoZq7iXc8N86NC0FspGRqP4gg==
+ts-node@8.8.1:
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.8.1.tgz#7c4d3e9ed33aa703b64b28d7f9d194768be5064d"
+  integrity sha512-10DE9ONho06QORKAaCBpPiFCdW+tZJuY/84tyypGtl6r+/C7Asq0dhqbRZURuUlLQtZxxDvT8eoj8cGW0ha6Bg==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
