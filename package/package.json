@@ -16,7 +16,7 @@
     "release": "semantic-release"
   },
   "devDependencies": {
-    "semantic-release": "17.0.8"
+    "semantic-release": "17.1.0"
   },
   "dependencies": {
     "ts-toolbelt": "^4.12.0"
