@@ -35,7 +35,7 @@
     "release": "cd package && npx semantic-release"
   },
   "resolutions": {
-    "micromatch": "4.0.2"
+    "micromatch": "4.0.8"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "9.0.1",
